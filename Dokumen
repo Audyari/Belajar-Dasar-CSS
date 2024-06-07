@@ -1,0 +1,58 @@
+Apa itu flexbox
+
+=====================
+
+https://github.com/WebdevShefali/CheatSheets/blob/main/Flexbox-cheatsheet.jpg
+
+
+Flexbox adalah sebuah modul tata letak CSS yang menyediakan cara yang lebih efisien dan fleksibel untuk mengatur tata letak elemen pada halaman web. 
+
+Beberapa fitur utama Flexbox:
+
+1. Arah Kontainer: Flexbox memungkinkan Anda untuk mengatur apakah elemen-elemen akan ditata secara horizontal (baris) atau vertikal (kolom).
+2. Ukuran Fleksibel: Elemen-elemen dalam kontainer Flexbox dapat menyusut atau memuai berdasarkan ruang yang tersedia.
+3. Perataan: Flexbox menyediakan opsi untuk memeratakan elemen-elemen secara horizontal dan vertikal dalam kontainer.
+4. Urutan: Anda dapat mengubah urutan elemen-elemen dalam kontainer Flexbox tanpa mengubah kode HTML.
+5. Responsif: Flexbox dapat menyesuaikan tata letak berdasarkan ukuran layar.
+
+=====================
+
+code sederhana : 
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Flexbox Example</title>
+  <style>
+    .container {
+      display: flex;
+      background-color: #f1f1f1;
+      padding: 20px;
+    }
+
+    .item {
+      background-color: #4CAF50;
+      color: white;
+      padding: 20px;
+      margin: 10px;
+      text-align: center;
+      font-size: 30px;
+      flex-grow: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+  </div>
+
+</body>
+</html>
+
+====================================
+
+
+
