@@ -1,75 +1,169 @@
-Selector Menggunakan Element HTML
+Mengenal Descendant Selector
 
-ada 4 atribut :
+ada 4 Combinator :
 
 =====================
 
 https://github.com/WebdevShefali/CheatSheets/blob/main/CSS%20_nth-child%20Selectors.png
 
-1. Selektors berdasarkan Tipe (Type Selectors)
+1. Descendant Combinator (spasi)
+Memilih elemen anak yang berada di dalam elemen induk, tanpa membatasi level kedalaman.
+Contoh: div p akan memilih semua elemen <p> yang berada di dalam elemen <div>.
 
-h1 {
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: #333;
-}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flex Layout Examples</title>
+    <style>
+      div p {
+        background-color: #2fca99;
+        font-size: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <p>Ini adalah paragraf 1 di dalam div.</p>
+      <p>Ini adalah paragraf 2 di dalam div.</p>
+      <section>
+        <p>Ini adalah paragraf 3 di dalam section di dalam div.</p>
+      </section>
+    </div>
 
-p {
-  font-size: 1rem;
-  line-height: 1.5;
-  color: #555;
-}
+    <ul>
+      <li>Item 1</li>
+      <li>Item 2</li>
+      <li>Item 3</li>
+    </ul>
+
+    <h2>Judul Utama</h2>
+    <p>Paragraf setelah judul utama.</p>
+    <p>Paragraf lainnya setelah judul utama.</p>
+    <h3>Judul Sekunder</h3>
+    <p>Paragraf setelah judul sekunder.</p>
+  </body>
+</html>
+
+
+
+==========================
+
+2. Child Combinator (>)
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flex Layout Examples</title>
+    <style>
+      section > p {
+        background-color: #901b1b;
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <p>PARAGRAF PERTAMA</p>
+      <p>PARAGRAF PERTAMA</p>
+      <div>
+        <p>PARAGRAF KEDUA</p>
+      </div>
+    </section>
+  </body>
+</html>
+
+
+====================================
+
+3. Adjacent Sibling Combinator (+)
+
+Selector ini akan memilih elemen <p> yang berada langsung setelah elemen <h2> pada level yang sama.
+ini satu doang
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flex Layout Examples</title>
+    <style>
+      h2 + p {
+        background-color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <p>Ini adalah paragraf 1 di dalam div.</p>
+      <p>Ini adalah paragraf 2 di dalam div.</p>
+      <section>
+        <p>Ini adalah paragraf 3 di dalam section di dalam div.</p>
+      </section>
+    </div>
+
+    <ul>
+      <li>Item 1</li>
+      <li>Item 2</li>
+      <li>Item 3</li>
+    </ul>
+
+    <h2>Judul Utama</h2>
+    <p>Paragraf setelah judul utama.</p>
+    <p>Paragraf lainnya setelah judul utama.</p>
+    <h3>Judul Sekunder</h3>
+    <p>Paragraf setelah judul sekunder.</p>
+  </body>
+</html>
+
+
+=================================
+
+4. General Sibling Combinator (~)
+Selector ini akan memilih semua elemen <p> yang berada setelah elemen <h2> pada level yang sama, tanpa membatasi jarak.
+ini milih semua nya :
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flex Layout Examples</title>
+    <style>
+      h2 ~ p {
+        background-color: aqua;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <p>Ini adalah paragraf 1 di dalam div.</p>
+      <p>Ini adalah paragraf 2 di dalam div.</p>
+      <section>
+        <p>Ini adalah paragraf 3 di dalam section di dalam div.</p>
+      </section>
+    </div>
+
+    <ul>
+      <li>Item 1</li>
+      <li>Item 2</li>
+      <li>Item 3</li>
+    </ul>
+
+    <h2>Judul Utama</h2>
+    <p>Paragraf setelah judul utama.</p>
+    <p>Paragraf lainnya setelah judul utama.</p>
+    <h3>Judul Sekunder</h3>
+    <p>Paragraf setelah judul sekunder.</p>
+  </body>
+</html>
+
+
 
 ==============================================
-2. Selektors berdasarkan Class:
 
-.btn {
-  display: inline-block;
-  padding: 0.5rem 1rem;
-  background-color: #007bff;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 0.25rem;
-}
 
-.btn:hover {
-  background-color: #0056b3;
-}
 
-========================================
-3. Selektors berdasarkan ID:
-
-#main-nav {
-  display: flex;
-  justify-content: center;
-  background-color: #f8f9fa;
-  padding: 1rem 0;
-}
-
-#main-nav a {
-  color: #495057;
-  text-decoration: none;
-  padding: 0.5rem 1rem;
-  margin: 0 0.5rem;
-}
-
-#main-nav a:hover {
-  color: #007bff;
-}
-
-==================================
-4. universal selector yang digunakan untuk memilih seluruh elemen di dalam dokumen HTML.
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-==============================
-
-Keunikan:
-ID: Hanya boleh digunakan sekali dalam satu dokumen HTML. Setiap elemen hanya boleh memiliki satu ID.
-Class: Dapat digunakan berulang kali dalam satu dokumen HTML. Satu elemen dapat memiliki beberapa class.
-
-===============================
+=============================================================
