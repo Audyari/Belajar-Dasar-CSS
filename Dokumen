@@ -1,39 +1,33 @@
-Menampilkan Element Dengan Ukuran Sebenaranya Pada Flex dengan flex-wrap
+Mengatur Perataan Secara Vertikal Dengan Align Item
 
-ada 3 property
+ada 5 property
 
 =====================
 
 https://github.com/WebdevShefali/CheatSheets/blob/main/Flexbox-cheatsheet.jpg
 
-flex-wrap
+Untuk mengatur perataan elemen-elemen secara vertikal di dalam kontainer Flexbox, Anda dapat menggunakan properti align-items.
 
-flex-wrap adalah salah satu properti Flexbox yang mengontrol bagaimana item-item di dalam kontainer Flexbox akan diatur jika tidak cukup ruang untuk ditampilkan dalam satu baris.
+1. flex-start (default): Item-item akan disejajarkan di bagian atas kontainer.
+2. flex-end: Item-item akan disejajarkan di bagian bawah kontainer.
+3. center: Item-item akan disejajarkan di tengah kontainer secara vertikal.
+4. baseline: Item-item akan disejajarkan berdasarkan garis dasar teks.
+5. stretch: Item-item akan meregangkan untuk mengisi seluruh tinggi kontainer (default jika tidak ada tinggi yang ditetapkan).
 
-Ada tiga nilai yang dapat digunakan untuk flex-wrap:
-
-1. nowrap (default):
-Item-item akan tetap dalam satu baris, meskipun mungkin melebihi lebar kontainer.
-Item-item akan dipangkas/diperkecil untuk muat dalam satu baris.
-2. wrap:
-Item-item akan dibungkus ke baris baru jika tidak cukup ruang.
-Item-item akan tetap pada ukuran awal mereka.
-3. wrap-reverse:
-Sama seperti wrap, tapi arah pembungkusan dari bawah ke atas.
-
-===============================
+==========================
 
 contoh code : 
 
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Flexbox Wrap Examples</title>
+  <title>Flexbox Vertical Alignment</title>
   <style>
     .container {
       display: flex;
       background-color: #f1f1f1;
       padding: 20px;
+      height: 300px; /* Atur tinggi kontainer */
       margin-bottom: 20px;
     }
 
@@ -44,55 +38,68 @@ contoh code :
       margin: 10px;
       text-align: center;
       font-size: 30px;
-      flex-basis: 150px; /* Lebar awal item */
+      flex-basis: 100px;
     }
 
-    #nowrap {
-      flex-wrap: nowrap;
+    #align-start {
+      align-items: flex-start;
     }
 
-    #wrap {
-      flex-wrap: wrap;
+    #align-end {
+      align-items: flex-end;
     }
 
-    #wrap-reverse {
-      flex-wrap: wrap-reverse;
+    #align-center {
+      align-items: center;
+    }
+
+    #align-baseline {
+      align-items: baseline;
+    }
+
+    #align-stretch {
+      align-items: stretch;
     }
   </style>
 </head>
 <body>
 
-  <h2>flex-wrap: nowrap (default)</h2>
-  <div class="container" id="nowrap">
+  <h2>align-items: flex-start (default)</h2>
+  <div class="container" id="align-start">
     <div class="item">1</div>
-    <div class="item">2</div>
+    <div class="item" style="font-size: 40px;">2</div>
     <div class="item">3</div>
-    <div class="item">4</div>
-    <div class="item">5</div>
-    <div class="item">6</div>
   </div>
 
-  <h2>flex-wrap: wrap</h2>
-  <div class="container" id="wrap">
+  <h2>align-items: flex-end</h2>
+  <div class="container" id="align-end">
     <div class="item">1</div>
-    <div class="item">2</div>
+    <div class="item" style="font-size: 40px;">2</div>
     <div class="item">3</div>
-    <div class="item">4</div>
-    <div class="item">5</div>
-    <div class="item">6</div>
   </div>
 
-  <h2>flex-wrap: wrap-reverse</h2>
-  <div class="container" id="wrap-reverse">
+  <h2>align-items: center</h2>
+  <div class="container" id="align-center">
     <div class="item">1</div>
-    <div class="item">2</div>
+    <div class="item" style="font-size: 40px;">2</div>
     <div class="item">3</div>
-    <div class="item">4</div>
-    <div class="item">5</div>
-    <div class="item">6</div>
+  </div>
+
+  <h2>align-items: baseline</h2>
+  <div class="container" id="align-baseline">
+    <div class="item">1</div>
+    <div class="item" style="font-size: 40px;">2</div>
+    <div class="item">3</div>
+  </div>
+
+  <h2>align-items: stretch (default if no height is set)</h2>
+  <div class="container" id="align-stretch">
+    <div class="item">1</div>
+    <div class="item" style="font-size: 40px;">2</div>
+    <div class="item">3</div>
   </div>
 
 </body>
 </html>
 
-=================================
+===========================================
