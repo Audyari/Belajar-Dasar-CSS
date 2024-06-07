@@ -1,84 +1,59 @@
-Attribute selectors
+grouping selector
 
-Attribute selectors adalah salah satu jenis selector dalam CSS yang memungkinkan Anda memilih elemen 
-berdasarkan atribut tertentu yang dimiliki oleh elemen tersebut.
 
-ada 6 Attribute selectors :
 
 =====================
 
 https://github.com/WebdevShefali/CheatSheets/blob/main/CSS%20_nth-child%20Selectors.png
 
-1. [atribut]:
-Memilih elemen yang memiliki atribut tertentu, tanpa memperhatikan nilai atributnya.
-
-2. [atribut="nilai"]:
-Memilih elemen yang memiliki atribut dengan nilai yang tepat sama.
-
-3. [atribut~="nilai"]:
-Memilih elemen yang memiliki atribut dengan nilai yang merupakan salah satu kata dalam daftar kata yang dipisahkan spasi.
-
-4. [atribut|="nilai"]:
-Memilih elemen yang memiliki atribut dengan nilai yang tepat sama atau diawali dengan nilai tersebut diikuti oleh tanda hubung.
-
-5. [atribut^="nilai"]:
-Memilih elemen yang memiliki atribut dengan nilai yang diawali dengan string tertentu.
-
-6. [atribut$="nilai"]:
-Memilih elemen yang memiliki atribut dengan nilai yang diakhiri dengan string tertentu.
-
-====================================================
-
-contoh code : 
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contoh Pemilih Atribut CSS</title>
-  <style>
-    /* 1. [atribut]: Memilih elemen yang memiliki atribut tertentu, tanpa memperhatikan nilai atributnya */
-    [type] {
-      font-weight: bold;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contoh Grouping Selector</title>
+    <style>
+      /* CSS dengan pengelompokan selektor */
+      h1,
+      h2,
+      h3 {
+        font-family: Arial, sans-serif;
+        color: #333;
+      }
 
-    /* 2. [atribut="nilai"]: Memilih elemen yang memiliki atribut dengan nilai yang tepat sama */
-    [type="text"] {
-      background-color: #f0f0f0;
-    }
+      p,
+      span {
+        font-family: Georgia, serif;
+        font-size: 16px;
+      }
 
-    /* 3. [atribut~="nilai"]: Memilih elemen yang memiliki atribut dengan nilai yang merupakan salah satu kata dalam daftar kata yang dipisahkan spasi */
-    [class~="important"] {
-      color: red;
-    }
+      button,
+      a {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
 
-    /* 4. [atribut|="nilai"]: Memilih elemen yang memiliki atribut dengan nilai yang tepat sama atau diawali dengan nilai tersebut diikuti oleh tanda hubung */
-    [lang|="en"] {
-      font-style: italic;
-    }
-
-    /* 5. [atribut^="nilai"]: Memilih elemen yang memiliki atribut dengan nilai yang diawali dengan string tertentu */
-    [id^="item-"] {
-      background-color: #e0e0e0;
-    }
-
-    /* 6. [atribut$="nilai"]: Memilih elemen yang memiliki atribut dengan nilai yang diakhiri dengan string tertentu */
-    [href$=".pdf"] {
-      color: blue;
-    }
-  </style>
-</head>
-<body>
-  <input type="text" placeholder="Masukkan teks">
-  <input type="number" placeholder="Masukkan angka">
-  <p class="important">Ini adalah paragraf penting.</p>
-  <p lang="en">This is an English paragraph.</p>
-  <p lang="en-US">This is another English paragraph.</p>
-  <a href="document.pdf">Unduh dokumen PDF</a>
-  <div id="item-1">Ini adalah item 1</div>
-  <div id="item-2">Ini adalah item 2</div>
-</body>
+      button:hover,
+      a:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Welcome to Our Website</h1>
+    <p>This is a paragraph of text.</p>
+    <h2>About Us</h2>
+    <p>Here is some more information about our company.</p>
+    <button>Learn More</button>
+    <a href="#">Visit Our Blog</a>
+    <h3>Our Services</h3>
+    <span>We offer a variety of services.</span>
+  </body>
 </html>
 
-=================================================
+
+=======================================
