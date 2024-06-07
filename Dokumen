@@ -1,169 +1,102 @@
-Mengenal Descendant Selector
+interactive state
 
-ada 4 Combinator :
+ada 7 interactive state :
 
 =====================
 
 https://github.com/WebdevShefali/CheatSheets/blob/main/CSS%20_nth-child%20Selectors.png
 
-1. Descendant Combinator (spasi)
-Memilih elemen anak yang berada di dalam elemen induk, tanpa membatasi level kedalaman.
-Contoh: div p akan memilih semua elemen <p> yang berada di dalam elemen <div>.
+1. :hover
+Keadaan saat pengguna mengarahkan kursor/pointer di atas elemen.
+Dapat digunakan untuk mengubah tampilan elemen, seperti mengubah warna latar belakang, font, atau menampilkan tooltip.
+Contoh: button:hover { background-color: #f1f1f1; }
+
+button:hover {
+  background-color: #f1f1f1;
+}
+
+=====================================
+2. :active
+Keadaan saat pengguna menekan (click) dan menahan di atas elemen.
+Biasanya digunakan untuk memberi umpan balik visual saat pengguna berinteraksi dengan elemen.
+Contoh: button:active { background-color: #ddd; }
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Flex Layout Examples</title>
+    <title>Button Active Example</title>
     <style>
-      div p {
-        background-color: #2fca99;
-        font-size: 30px;
+      button {
+        background-color: #4caf50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      button:active {
+        background-color: #4c1212;
       }
     </style>
   </head>
   <body>
-    <div>
-      <p>Ini adalah paragraf 1 di dalam div.</p>
-      <p>Ini adalah paragraf 2 di dalam div.</p>
-      <section>
-        <p>Ini adalah paragraf 3 di dalam section di dalam div.</p>
-      </section>
-    </div>
-
-    <ul>
-      <li>Item 1</li>
-      <li>Item 2</li>
-      <li>Item 3</li>
-    </ul>
-
-    <h2>Judul Utama</h2>
-    <p>Paragraf setelah judul utama.</p>
-    <p>Paragraf lainnya setelah judul utama.</p>
-    <h3>Judul Sekunder</h3>
-    <p>Paragraf setelah judul sekunder.</p>
+    <button>Click Me!</button>
   </body>
 </html>
 
 
+=================================================
+:focus
+Keadaan saat elemen mendapatkan fokus, biasanya saat pengguna mengklik atau tab pada elemen.
+Digunakan untuk memberikan indikasi visual bahwa elemen sedang dalam fokus, seperti mengubah warna batas.
+Contoh: input:focus { border-color: #4CAF50; }
 
-==========================
+input:focus {
+  border-color: #4CAF50;
+}
 
-2. Child Combinator (>)
+===================================
+:visited
+Keadaan saat pengguna telah mengunjungi (mengklik) link sebelumnya.
+Digunakan untuk memberikan tampilan yang berbeda untuk link yang sudah dikunjungi.
+Contoh: a:visited { color: purple; }
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Flex Layout Examples</title>
-    <style>
-      section > p {
-        background-color: #901b1b;
-      }
-    </style>
-  </head>
-  <body>
-    <section>
-      <p>PARAGRAF PERTAMA</p>
-      <p>PARAGRAF PERTAMA</p>
-      <div>
-        <p>PARAGRAF KEDUA</p>
-      </div>
-    </section>
-  </body>
-</html>
-
+a:visited {
+  color: purple;
+}
 
 ====================================
+:disabled
+Keadaan saat elemen sedang dalam keadaan tidak aktif (disabled).
+Digunakan untuk memberikan tampilan dan interaksi yang berbeda untuk elemen yang tidak dapat dioperasikan.
+Contoh: button:disabled { opacity: 0.6; cursor: not-allowed; }
 
-3. Adjacent Sibling Combinator (+)
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
 
-Selector ini akan memilih elemen <p> yang berada langsung setelah elemen <h2> pada level yang sama.
-ini satu doang
+======================================
+:enabled
+Keadaan kebalikan dari :disabled, yaitu saat elemen dalam keadaan aktif.
+Digunakan untuk memberikan tampilan dan interaksi yang berbeda untuk elemen yang dapat dioperasikan.
+Contoh: button:enabled { opacity: 1; cursor: pointer; }
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Flex Layout Examples</title>
-    <style>
-      h2 + p {
-        background-color: blue;
-      }
-    </style>
-  </head>
-  <body>
-    <div>
-      <p>Ini adalah paragraf 1 di dalam div.</p>
-      <p>Ini adalah paragraf 2 di dalam div.</p>
-      <section>
-        <p>Ini adalah paragraf 3 di dalam section di dalam div.</p>
-      </section>
-    </div>
+button:enabled {
+  opacity: 1;
+  cursor: pointer;
+}
+===============================
+:checked
+Keadaan saat elemen checkbox atau radio button sedang dalam keadaan terpilih (checked).
+Digunakan untuk memberikan tampilan yang berbeda untuk elemen yang sedang dipilih.
+Contoh: input[type="checkbox"]:checked { background-color: #4CAF50; }
 
-    <ul>
-      <li>Item 1</li>
-      <li>Item 2</li>
-      <li>Item 3</li>
-    </ul>
+input[type="checkbox"]:checked {
+  background-color: #4CAF50;
+}
 
-    <h2>Judul Utama</h2>
-    <p>Paragraf setelah judul utama.</p>
-    <p>Paragraf lainnya setelah judul utama.</p>
-    <h3>Judul Sekunder</h3>
-    <p>Paragraf setelah judul sekunder.</p>
-  </body>
-</html>
-
-
-=================================
-
-4. General Sibling Combinator (~)
-Selector ini akan memilih semua elemen <p> yang berada setelah elemen <h2> pada level yang sama, tanpa membatasi jarak.
-ini milih semua nya :
-
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Flex Layout Examples</title>
-    <style>
-      h2 ~ p {
-        background-color: aqua;
-      }
-    </style>
-  </head>
-  <body>
-    <div>
-      <p>Ini adalah paragraf 1 di dalam div.</p>
-      <p>Ini adalah paragraf 2 di dalam div.</p>
-      <section>
-        <p>Ini adalah paragraf 3 di dalam section di dalam div.</p>
-      </section>
-    </div>
-
-    <ul>
-      <li>Item 1</li>
-      <li>Item 2</li>
-      <li>Item 3</li>
-    </ul>
-
-    <h2>Judul Utama</h2>
-    <p>Paragraf setelah judul utama.</p>
-    <p>Paragraf lainnya setelah judul utama.</p>
-    <h3>Judul Sekunder</h3>
-    <p>Paragraf setelah judul sekunder.</p>
-  </body>
-</html>
-
-
-
-==============================================
-
-
-
-=============================================================
+==================================
