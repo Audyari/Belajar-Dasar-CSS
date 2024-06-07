@@ -1,28 +1,26 @@
-Apa itu flexbox
+Mengatur Urutan Element Dengan Flex Direction
 
 =====================
 
 https://github.com/WebdevShefali/CheatSheets/blob/main/Flexbox-cheatsheet.jpg
 
+Penjelasan:
 
-Flexbox adalah sebuah modul tata letak CSS yang menyediakan cara yang lebih efisien dan fleksibel untuk mengatur tata letak elemen pada halaman web. 
+1. Kita membuat empat kontainer Flexbox dengan kelas yang berbeda: "row", "row-reverse", "column", dan "column-reverse".
+2. Pada setiap kontainer, kita menambahkan tiga elemen anak dengan kelas "item".
+3. Kita mengatur flex-direction pada masing-masing kontainer:
 
-Beberapa fitur utama Flexbox:
+  * row: Elemen-elemen disusun secara horizontal dari kiri ke kanan.
+  * row-reverse: Elemen-elemen disusun secara horizontal dari kanan ke kiri.
+  * column: Elemen-elemen disusun secara vertikal dari atas ke bawah.
+  * column-reverse: Elemen-elemen disusun secara vertikal dari bawah ke atas.
 
-1. Arah Kontainer: Flexbox memungkinkan Anda untuk mengatur apakah elemen-elemen akan ditata secara horizontal (baris) atau vertikal (kolom).
-2. Ukuran Fleksibel: Elemen-elemen dalam kontainer Flexbox dapat menyusut atau memuai berdasarkan ruang yang tersedia.
-3. Perataan: Flexbox menyediakan opsi untuk memeratakan elemen-elemen secara horizontal dan vertikal dalam kontainer.
-4. Urutan: Anda dapat mengubah urutan elemen-elemen dalam kontainer Flexbox tanpa mengubah kode HTML.
-5. Responsif: Flexbox dapat menyesuaikan tata letak berdasarkan ukuran layar.
-
-=====================
-
-code sederhana : 
+contoh code nya : 
 
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Flexbox Example</title>
+  <title>Flexbox Direction Example</title>
   <style>
     .container {
       display: flex;
@@ -37,13 +35,51 @@ code sederhana :
       margin: 10px;
       text-align: center;
       font-size: 30px;
-      flex-grow: 1;
+      flex-basis: 100px;
+    }
+
+    .row {
+      flex-direction: row;
+    }
+
+    .row-reverse {
+      flex-direction: row-reverse;
+    }
+
+    .column {
+      flex-direction: column;
+    }
+
+    .column-reverse {
+      flex-direction: column-reverse;
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
+  <h2>Row</h2>
+  <div class="container row">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+  </div>
+
+  <h2>Row Reverse</h2>
+  <div class="container row-reverse">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+  </div>
+
+  <h2>Column</h2>
+  <div class="container column">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+  </div>
+
+  <h2>Column Reverse</h2>
+  <div class="container column-reverse">
     <div class="item">1</div>
     <div class="item">2</div>
     <div class="item">3</div>
@@ -52,7 +88,4 @@ code sederhana :
 </body>
 </html>
 
-====================================
-
-
-
+============================================
