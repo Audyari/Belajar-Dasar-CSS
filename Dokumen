@@ -1,31 +1,63 @@
-Mengatur Urutan Element Dengan Flex Direction
+Membagi Rata Jarak Horizontal Dengan Justify Content
+
+total ada 6 property
 
 =====================
 
 https://github.com/WebdevShefali/CheatSheets/blob/main/Flexbox-cheatsheet.jpg
 
-Penjelasan:
+1. justify-content: space-between;:
+ Ini akan membuat jarak antar elemen menjadi sama besar, dengan elemen pertama dan terakhir melekat di tepi kontainer.
 
-1. Kita membuat empat kontainer Flexbox dengan kelas yang berbeda: "row", "row-reverse", "column", dan "column-reverse".
-2. Pada setiap kontainer, kita menambahkan tiga elemen anak dengan kelas "item".
-3. Kita mengatur flex-direction pada masing-masing kontainer:
+.container {
+  display: flex;
+  justify-content: space-between;
+}
 
-  * row: Elemen-elemen disusun secara horizontal dari kiri ke kanan.
-  * row-reverse: Elemen-elemen disusun secara horizontal dari kanan ke kiri.
-  * column: Elemen-elemen disusun secara vertikal dari atas ke bawah.
-  * column-reverse: Elemen-elemen disusun secara vertikal dari bawah ke atas.
+=====================================
+
+2. justify-content: space-around;:
+Ini akan membuat jarak antar elemen, termasuk di sisi kiri dan kanan kontainer, menjadi sama besar.
+Contoh:
+
+.container {
+  display: flex;
+  justify-content: space-around;
+}
+
+=================================
+
+1. flex-start (default)
+Menyelaraskan elemen-elemen di awal (kiri) kontainer.
+2. flex-end
+Menyelaraskan elemen-elemen di akhir (kanan) kontainer.
+3. center
+Menyelaraskan elemen-elemen di tengah kontainer.
+4. space-between
+Membagi ruang kosong secara merata di antara elemen-elemen.
+Elemen pertama dan terakhir melekat di tepi kontainer.
+5. space-around
+Membagi ruang kosong secara merata di sekitar elemen-elemen.
+Jarak di sisi kiri dan kanan kontainer sama.
+6. space-evenly
+Membagi ruang kosong secara merata di antara dan di sekitar elemen-elemen.
+Jarak di antara elemen, dan di sisi kiri/kanan kontainer, menjadi sama.
+
+==================================
+
 
 contoh code nya : 
 
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Flexbox Direction Example</title>
+  <title>Flexbox Justify Content Examples</title>
   <style>
     .container {
       display: flex;
       background-color: #f1f1f1;
       padding: 20px;
+      margin-bottom: 20px;
     }
 
     .item {
@@ -38,48 +70,71 @@ contoh code nya :
       flex-basis: 100px;
     }
 
-    .row {
-      flex-direction: row;
+    /* Contoh nilai justify-content */
+    #flex-start {
+      justify-content: flex-start;
     }
 
-    .row-reverse {
-      flex-direction: row-reverse;
+    #flex-end {
+      justify-content: flex-end;
     }
 
-    .column {
-      flex-direction: column;
+    #center {
+      justify-content: center;
     }
 
-    .column-reverse {
-      flex-direction: column-reverse;
+    #space-between {
+      justify-content: space-between;
+    }
+
+    #space-around {
+      justify-content: space-around;
+    }
+
+    #space-evenly {
+      justify-content: space-evenly;
     }
   </style>
 </head>
 <body>
 
-  <h2>Row</h2>
-  <div class="container row">
+  <h2>justify-content: flex-start</h2>
+  <div class="container" id="flex-start">
     <div class="item">1</div>
     <div class="item">2</div>
     <div class="item">3</div>
   </div>
 
-  <h2>Row Reverse</h2>
-  <div class="container row-reverse">
+  <h2>justify-content: flex-end</h2>
+  <div class="container" id="flex-end">
     <div class="item">1</div>
     <div class="item">2</div>
     <div class="item">3</div>
   </div>
 
-  <h2>Column</h2>
-  <div class="container column">
+  <h2>justify-content: center</h2>
+  <div class="container" id="center">
     <div class="item">1</div>
     <div class="item">2</div>
     <div class="item">3</div>
   </div>
 
-  <h2>Column Reverse</h2>
-  <div class="container column-reverse">
+  <h2>justify-content: space-between</h2>
+  <div class="container" id="space-between">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+  </div>
+
+  <h2>justify-content: space-around</h2>
+  <div class="container" id="space-around">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+  </div>
+
+  <h2>justify-content: space-evenly</h2>
+  <div class="container" id="space-evenly">
     <div class="item">1</div>
     <div class="item">2</div>
     <div class="item">3</div>
@@ -88,4 +143,5 @@ contoh code nya :
 </body>
 </html>
 
-============================================
+
+=================================
