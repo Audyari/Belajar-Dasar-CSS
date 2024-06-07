@@ -1,57 +1,28 @@
-Membagi Rata Jarak Horizontal Dengan Justify Content
+Menampilkan Element Dengan Ukuran Sebenaranya Pada Flex
 
-total ada 6 property
+
 
 =====================
 
 https://github.com/WebdevShefali/CheatSheets/blob/main/Flexbox-cheatsheet.jpg
 
-1. justify-content: space-between;:
- Ini akan membuat jarak antar elemen menjadi sama besar, dengan elemen pertama dan terakhir melekat di tepi kontainer.
+Untuk menampilkan elemen dengan ukuran sebenarnya pada Flexbox, Anda dapat menggunakan properti flex-basis.
 
-.container {
-  display: flex;
-  justify-content: space-between;
-}
+1. Kita membuat sebuah kontainer Flexbox dengan kelas container.
+2. Setiap elemen anak di dalam kontainer memiliki kelas item.
+3. Pada properti .item, kita mengatur flex-basis: auto;. Ini akan membuat elemen menampilkan ukuran sebenarnya, tanpa dipengaruhi oleh distribusi ruang dalam Flexbox.
 
-=====================================
-
-2. justify-content: space-around;:
-Ini akan membuat jarak antar elemen, termasuk di sisi kiri dan kanan kontainer, menjadi sama besar.
 Contoh:
 
-.container {
-  display: flex;
-  justify-content: space-around;
-}
+flex-basis: 200px; akan membuat elemen memiliki lebar 200 piksel.
+flex-basis: 30%; akan membuat elemen memiliki lebar 30% dari lebar kontainer.
 
-=================================
-
-1. flex-start (default)
-Menyelaraskan elemen-elemen di awal (kiri) kontainer.
-2. flex-end
-Menyelaraskan elemen-elemen di akhir (kanan) kontainer.
-3. center
-Menyelaraskan elemen-elemen di tengah kontainer.
-4. space-between
-Membagi ruang kosong secara merata di antara elemen-elemen.
-Elemen pertama dan terakhir melekat di tepi kontainer.
-5. space-around
-Membagi ruang kosong secara merata di sekitar elemen-elemen.
-Jarak di sisi kiri dan kanan kontainer sama.
-6. space-evenly
-Membagi ruang kosong secara merata di antara dan di sekitar elemen-elemen.
-Jarak di antara elemen, dan di sisi kiri/kanan kontainer, menjadi sama.
-
-==================================
-
-
-contoh code nya : 
+===========================
 
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Flexbox Justify Content Examples</title>
+  <title>Flexbox Actual Size Example</title>
   <style>
     .container {
       display: flex;
@@ -67,81 +38,22 @@ contoh code nya :
       margin: 10px;
       text-align: center;
       font-size: 30px;
-      flex-basis: 100px;
-    }
-
-    /* Contoh nilai justify-content */
-    #flex-start {
-      justify-content: flex-start;
-    }
-
-    #flex-end {
-      justify-content: flex-end;
-    }
-
-    #center {
-      justify-content: center;
-    }
-
-    #space-between {
-      justify-content: space-between;
-    }
-
-    #space-around {
-      justify-content: space-around;
-    }
-
-    #space-evenly {
-      justify-content: space-evenly;
+      flex-basis: auto; /* Menggunakan ukuran sebenarnya */
     }
   </style>
 </head>
 <body>
 
-  <h2>justify-content: flex-start</h2>
-  <div class="container" id="flex-start">
+  <h2>Elemen dengan Ukuran Sebenarnya</h2>
+  <div class="container">
     <div class="item">1</div>
     <div class="item">2</div>
     <div class="item">3</div>
-  </div>
-
-  <h2>justify-content: flex-end</h2>
-  <div class="container" id="flex-end">
-    <div class="item">1</div>
-    <div class="item">2</div>
-    <div class="item">3</div>
-  </div>
-
-  <h2>justify-content: center</h2>
-  <div class="container" id="center">
-    <div class="item">1</div>
-    <div class="item">2</div>
-    <div class="item">3</div>
-  </div>
-
-  <h2>justify-content: space-between</h2>
-  <div class="container" id="space-between">
-    <div class="item">1</div>
-    <div class="item">2</div>
-    <div class="item">3</div>
-  </div>
-
-  <h2>justify-content: space-around</h2>
-  <div class="container" id="space-around">
-    <div class="item">1</div>
-    <div class="item">2</div>
-    <div class="item">3</div>
-  </div>
-
-  <h2>justify-content: space-evenly</h2>
-  <div class="container" id="space-evenly">
-    <div class="item">1</div>
-    <div class="item">2</div>
-    <div class="item">3</div>
+    <div class="item">4</div>
+    <div class="item">5</div>
   </div>
 
 </body>
 </html>
 
-
-=================================
+=========================
