@@ -1,19 +1,75 @@
-saya sarankan Anda mempelajari yang berikut ini terlebih dahulu:
+Selector Menggunakan Element HTML
 
-1. CSS Selectors Cheatsheet: Ini adalah dasar yang penting untuk mempelajari CSS, karena memahami selector CSS akan membantu Anda menargetkan elemen yang ingin Anda gaya.
-2. CSS Display Cheatsheet: Properti display adalah salah satu properti CSS yang paling fundamental, yang mengatur bagaimana elemen ditampilkan.
-3. CSS Positions Cheatsheet: Penguasaan posisi elemen menggunakan properti position juga sangat penting dalam desain layout dengan CSS.
-4. Flexbox Cheatsheet: Flexbox adalah salah satu konsep layout CSS yang sangat powerful dan banyak digunakan saat ini. Memahami konsep Flexbox akan sangat bermanfaat.
-
-========================
-
-5. CSS nth-child Selectors: Ini adalah salah satu advanced selector yang berguna untuk menargetkan elemen berdasarkan posisinya dalam struktur DOM.
-6. Grid Cheatsheet: Grid adalah layout system CSS lainnya yang juga sangat powerful dan penting untuk dipelajari.
-7. Git Commands Cheatsheet: Ini bukan materi CSS, tapi penguasaan Git juga sangat penting untuk pengembangan web.
-8. VSCode Shortcuts Cheatsheet: Menguasai shortcut editor kode Anda juga akan meningkatkan produktivitas.
-9. README.md: Meskipun bukan materi CSS, file README yang baik juga penting untuk dokumentasi proyek.
-
+ada 4 atribut :
 
 =====================
 
-https://github.com/WebdevShefali/CheatSheets/blob/main/Flexbox-cheatsheet.jpg
+https://github.com/WebdevShefali/CheatSheets/blob/main/CSS%20_nth-child%20Selectors.png
+
+1. Selektors berdasarkan Tipe (Type Selectors)
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #555;
+}
+
+==============================================
+2. Selektors berdasarkan Class:
+
+.btn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 0.25rem;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
+========================================
+3. Selektors berdasarkan ID:
+
+#main-nav {
+  display: flex;
+  justify-content: center;
+  background-color: #f8f9fa;
+  padding: 1rem 0;
+}
+
+#main-nav a {
+  color: #495057;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  margin: 0 0.5rem;
+}
+
+#main-nav a:hover {
+  color: #007bff;
+}
+
+==================================
+4. universal selector yang digunakan untuk memilih seluruh elemen di dalam dokumen HTML.
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+==============================
+
+Keunikan:
+ID: Hanya boleh digunakan sekali dalam satu dokumen HTML. Setiap elemen hanya boleh memiliki satu ID.
+Class: Dapat digunakan berulang kali dalam satu dokumen HTML. Satu elemen dapat memiliki beberapa class.
+
+===============================
