@@ -1,195 +1,188 @@
-Mengatur Jarak Cross Axis dengan Align Content Dan Align Self
+membuat sebuah custom range slider (slider input) menggunakan hanya CSS
 
-align-content: ada 6 property
-align-self: ada 6 property
+
 
 =====================
 
 https://github.com/WebdevShefali/CheatSheets/blob/main/Flexbox-cheatsheet.jpg
 
 
-1. align-content:
-
-  * flex-start (default): Baris-baris akan disejajarkan di bagian atas kontainer.
-  * flex-end: Baris-baris akan disejajarkan di bagian bawah kontainer.
-  * center: Baris-baris akan disejajarkan di tengah kontainer secara vertikal.
-  * space-between: Baris-baris akan didistribusikan dengan jarak yang sama antar baris.
-  * space-around: Baris-baris akan didistribusikan dengan jarak yang sama di sekitar baris.
-  * stretch: Baris-baris akan meregangkan untuk mengisi seluruh tinggi kontainer (default jika tidak ada tinggi yang ditetapkan).
-
-2. align-self:
-
-  * auto (default): Mengikuti nilai align-items dari kontainer.
-  * flex-start: Item akan disejajarkan di bagian atas.
-  * flex-end: Item akan disejajarkan di bagian bawah.
-  * center: Item akan disejajarkan di tengah secara vertikal.
-  * baseline: Item akan disejajarkan berdasarkan garis dasar teks.
-  * stretch: Item akan meregangkan untuk mengisi seluruh tinggi kontainer.
-
-=============================
-
-contoh code nya : 
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Flex Layout Examples</title>
     <style>
-        .container {
-            display: flex;
-            background-color: #472121;
-            padding: 20px;
-            height: 900px;
-            flex-direction: column;
-            flex-wrap: wrap;
-            align-items: center; /* Sesuaikan perataan vertikal item-item */
-        }
+      .container {
+        display: flex;
+        background-color: #472121;
+        padding: 100px;
+        height: 100px;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-items: center; /* Sesuaikan perataan vertikal item-item */
+      }
+      @property --val {
+        syntax: "<integer>";
+        inherits: true;
+        initial-value: 0;
+      }
+      @property --e {
+        syntax: "<number>";
+        inherits: true;
+        initial-value: 0;
+      }
 
-        .item {
-            background-color: #4CAF50;
-            color: white;
-            padding: 20px;
-            margin: 10px;
-            text-align: center;
-            font-size: 30px;
-            flex-basis: 100px;
-        }
+      label {
+        --c: #547980; /* slider color */
+        --g: round(0.3em, 1px); /* the gap */
+        --l: round(0.2em, 1px); /* line thickness*/
+        --s: round(1.3em, 1px); /* thumb size*/
+        --t: round(0.8em, 1px); /* tooltip tail size */
+        --r: round(0.8em, 1px); /* tooltip radius */
 
-        #align-content-start {
-            align-content: flex-start;
-        }
+        timeline-scope: --thumb-view;
+        translate: 0; /* No, It's not useless so don't remove it (or remove it and see what happens) */
+        font-size: 24px;
+      }
 
-        #align-content-end {
-            align-content: flex-end;
-        }
+      input {
+        width: 400px;
+        height: var(--s); /* needed for Firefox*/
+        --_c: color-mix(in srgb, var(--c), #000 var(--p, 0%));
+        appearance: none;
+        background: none;
+        cursor: pointer;
+        overflow: hidden;
+        font-size: inherit;
+      }
+      input:focus-visible,
+      input:hover {
+        --p: 25%;
+      }
+      input:active,
+      input:focus-visible {
+        --_b: var(--s);
+      }
+      /* chromium */
+      input[type="range" i]::-webkit-slider-thumb {
+        height: var(--s);
+        aspect-ratio: 1;
+        border-radius: 50%;
+        box-shadow: 0 0 0 var(--_b, var(--l)) inset var(--_c);
+        border-image: linear-gradient(90deg, var(--_c) 50%, #ababab 0) 0 1 /
+          calc(50% - var(--l) / 2) 100vw/0 calc(100vw + var(--g));
+        -webkit-appearance: none;
+        appearance: none;
+        transition: 0.3s;
+        anchor-name: --thumb;
+        view-timeline: --thumb-view inline;
+        view-timeline-inset: var(--s);
+      }
+      /* Firefox */
+      input[type="range"]::-moz-range-thumb {
+        height: var(--s);
+        width: var(--s);
+        background: none;
+        border-radius: 50%;
+        box-shadow: 0 0 0 var(--_b, var(--l)) inset var(--_c);
+        border-image: linear-gradient(90deg, var(--_c) 50%, #ababab 0) 0 1 /
+          calc(50% - var(--l) / 2) 100vw/0 calc(100vw + var(--g));
+        -moz-appearance: none;
+        appearance: none;
+        transition: 0.3s;
+        anchor-name: --thumb;
+        view-timeline: --thumb-view inline;
+        view-timeline-inset: var(--s);
+      }
+      output {
+        background: #cc333f;
+        --val: var(--min);
+        animation: range linear;
+        animation-timeline: --thumb-view;
+      }
+      output:before {
+        content: counter(num);
+        counter-reset: num var(--val);
+        position-anchor: --thumb;
+        position: absolute;
+        inset-area: top span-all;
+        color: #fff;
+        font-weight: bold;
+        font-family: sans-serif;
+        text-align: center;
+        padding-block: 0.5em;
+        width: 4em;
+        background: inherit;
+        --e: var(--val);
+        transition: --e 0.1s ease-out;
+        rotate: calc((var(--e) - var(--val)) * 2deg);
+        transform-origin: 50% calc(100% + var(--s) / 2);
+        border-bottom: var(--t) solid #0000;
+        border-radius: var(--r) / var(--r) var(--r) calc(var(--r) + var(--t))
+          calc(var(--r) + var(--t));
+        --_m: 100% / var(--t) var(--t) no-repeat;
+        --_g: 100%, #0000 99%, #000 102%;
+        mask: linear-gradient(#000 0 0) padding-box,
+          radial-gradient(100% 100% at 100% var(--_g)) calc(50% + var(--t) / 2)
+            var(--_m),
+          radial-gradient(100% 100% at 0 var(--_g)) calc(50% - var(--t) / 2)
+            var(--_m);
+      }
+      output.bottom:before {
+        inset-area: bottom span-all;
+        border-top: var(--t) solid #0000;
+        border-bottom: none;
+        rotate: calc((var(--val) - var(--e)) * 2deg);
+        transform-origin: 50% calc(var(--s) / -2);
+        border-radius: var(--r) / calc(var(--r) + var(--t))
+          calc(var(--r) + var(--t)) var(--r) var(--r);
+        --_m: 0% / var(--t) var(--t) no-repeat;
+        --_g: 0%, #0000 99%, #000 102%;
+      }
 
-        #align-content-center {
-            align-content: center;
+      @keyframes range {
+        0% {
+          background: #8a9b0f;
+          --val: var(--max);
         }
+      }
 
-        #align-content-space-between {
-            align-content: space-between;
+      @supports not (anchor-name: ---) {
+        output {
+          display: none;
         }
+      }
 
-        #align-content-space-around {
-            align-content: space-around;
-        }
-
-        #align-content-stretch {
-            align-content: stretch;
-        }
-
-        .item#self-start {
-            align-self: flex-start;
-        }
-
-        .item#self-end {
-            align-self: flex-end;
-        }
-
-        .item#self-center {
-            align-self: center;
-        }
-
-        .item#self-baseline {
-            align-self: baseline;
-        }
-
-        .item#self-stretch {
-            align-self: stretch;
-        }
+      /**/
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        gap: 20px;
+        place-content: center;
+        background: repeating-linear-gradient(
+          -45deg,
+          #fff 0 20px,
+          #f9f9f9 0 40px
+        );
+      }
     </style>
-</head>
-<body>
-    <div class="container" id="align-content-start">
-        <div class="item">Item 1</div>
-        <div class="item">Item 2</div>
-        <div class="item">Item 3</div>
-        <div class="item">Item 4</div>
-        <div class="item">Item 5</div>
-        <div class="item">Item 6</div>
-        <div class="item">Item 7</div>
-        <div class="item">Item 8</div>
-        <div class="item">Item 9</div>
-        <div class="item">Item 10</div>
-    </div>
-
-    <div class="container" id="align-content-end">
-        <div class="item">Item 1</div>
-        <div class="item">Item 2</div>
-        <div class="item">Item 3</div>
-        <div class="item">Item 4</div>
-        <div class="item">Item 5</div>
-        <div class="item">Item 6</div>
-        <div class="item">Item 7</div>
-        <div class="item">Item 8</div>
-        <div class="item">Item 9</div>
-        <div class="item">Item 10</div>
-    </div>
-
-    <div class="container" id="align-content-center">
-        <div class="item">Item 1</div>
-        <div class="item">Item 2</div>
-        <div class="item">Item 3</div>
-        <div class="item">Item 4</div>
-        <div class="item">Item 5</div>
-        <div class="item">Item 6</div>
-        <div class="item">Item 7</div>
-        <div class="item">Item 8</div>
-        <div class="item">Item 9</div>
-        <div class="item">Item 10</div>
-    </div>
-
-    <div class="container" id="align-content-space-between">
-        <div class="item">Item 1</div>
-        <div class="item">Item 2</div>
-        <div class="item">Item 3</div>
-        <div class="item">Item 4</div>
-        <div class="item">Item 5</div>
-        <div class="item">Item 6</div>
-        <div class="item">Item 7</div>
-        <div class="item">Item 8</div>
-        <div class="item">Item 9</div>
-        <div class="item">Item 10</div>
-    </div>
-
-    <div class="container" id="align-content-space-around">
-        <div class="item">Item 1</div>
-        <div class="item">Item 2</div>
-        <div class="item">Item 3</div>
-        <div class="item">Item 4</div>
-        <div class="item">Item 5</div>
-        <div class="item">Item 6</div>
-        <div class="item">Item 7</div>
-        <div class="item">Item 8</div>
-        <div class="item">Item 9</div>
-        <div class="item">Item 10</div>
-    </div>
-
-    <div class="container" id="align-content-stretch">
-        <div class="item">Item 1</div>
-        <div class="item">Item 2</div>
-        <div class="item">Item 3</div>
-        <div class="item">Item 4</div>
-        <div class="item">Item 5</div>
-        <div class="item">Item 6</div>
-        <div class="item">Item 7</div>
-        <div class="item">Item 8</div>
-        <div class="item">Item 9</div>
-        <div class="item">Item 10</div>
-    </div>
-
+  </head>
+  <body>
     <div class="container">
-        <div class="item" id="self-start">Item 1</div>
-        <div class="item" id="self-end">Item 2</div>
-        <div class="item" id="self-center">Item 3</div>
-        <div class="item" id="self-baseline">Item 4</div>
-        <div class="item" id="self-stretch">Item 5</div>
+      <label>
+        <input type="range" id="one" min="0" max="120" step="1" value="20" />
+        <output for="one" style="--min: 0; --max: 120"></output>
+      </label>
+      <label style="--c: #bd1550">
+        <input type="range" id="two" min="-50" max="50" step="1" value="0" />
+        <output class="bottom" for="two" style="--min: -50; --max: 50"></output>
+      </label>
     </div>
-</body>
+  </body>
 </html>
 
 
-==============================================================
+============================================
