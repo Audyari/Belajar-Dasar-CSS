@@ -1,105 +1,195 @@
-Mengatur Perataan Secara Vertikal Dengan Align Item
+Mengatur Jarak Cross Axis dengan Align Content Dan Align Self
 
-ada 5 property
+align-content: ada 6 property
+align-self: ada 6 property
 
 =====================
 
 https://github.com/WebdevShefali/CheatSheets/blob/main/Flexbox-cheatsheet.jpg
 
-Untuk mengatur perataan elemen-elemen secara vertikal di dalam kontainer Flexbox, Anda dapat menggunakan properti align-items.
 
-1. flex-start (default): Item-item akan disejajarkan di bagian atas kontainer.
-2. flex-end: Item-item akan disejajarkan di bagian bawah kontainer.
-3. center: Item-item akan disejajarkan di tengah kontainer secara vertikal.
-4. baseline: Item-item akan disejajarkan berdasarkan garis dasar teks.
-5. stretch: Item-item akan meregangkan untuk mengisi seluruh tinggi kontainer (default jika tidak ada tinggi yang ditetapkan).
+1. align-content:
 
-==========================
+  * flex-start (default): Baris-baris akan disejajarkan di bagian atas kontainer.
+  * flex-end: Baris-baris akan disejajarkan di bagian bawah kontainer.
+  * center: Baris-baris akan disejajarkan di tengah kontainer secara vertikal.
+  * space-between: Baris-baris akan didistribusikan dengan jarak yang sama antar baris.
+  * space-around: Baris-baris akan didistribusikan dengan jarak yang sama di sekitar baris.
+  * stretch: Baris-baris akan meregangkan untuk mengisi seluruh tinggi kontainer (default jika tidak ada tinggi yang ditetapkan).
 
-contoh code : 
+2. align-self:
+
+  * auto (default): Mengikuti nilai align-items dari kontainer.
+  * flex-start: Item akan disejajarkan di bagian atas.
+  * flex-end: Item akan disejajarkan di bagian bawah.
+  * center: Item akan disejajarkan di tengah secara vertikal.
+  * baseline: Item akan disejajarkan berdasarkan garis dasar teks.
+  * stretch: Item akan meregangkan untuk mengisi seluruh tinggi kontainer.
+
+=============================
+
+contoh code nya : 
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Flexbox Vertical Alignment</title>
-  <style>
-    .container {
-      display: flex;
-      background-color: #f1f1f1;
-      padding: 20px;
-      height: 300px; /* Atur tinggi kontainer */
-      margin-bottom: 20px;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flex Layout Examples</title>
+    <style>
+        .container {
+            display: flex;
+            background-color: #472121;
+            padding: 20px;
+            height: 900px;
+            flex-direction: column;
+            flex-wrap: wrap;
+            align-items: center; /* Sesuaikan perataan vertikal item-item */
+        }
 
-    .item {
-      background-color: #4CAF50;
-      color: white;
-      padding: 20px;
-      margin: 10px;
-      text-align: center;
-      font-size: 30px;
-      flex-basis: 100px;
-    }
+        .item {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            margin: 10px;
+            text-align: center;
+            font-size: 30px;
+            flex-basis: 100px;
+        }
 
-    #align-start {
-      align-items: flex-start;
-    }
+        #align-content-start {
+            align-content: flex-start;
+        }
 
-    #align-end {
-      align-items: flex-end;
-    }
+        #align-content-end {
+            align-content: flex-end;
+        }
 
-    #align-center {
-      align-items: center;
-    }
+        #align-content-center {
+            align-content: center;
+        }
 
-    #align-baseline {
-      align-items: baseline;
-    }
+        #align-content-space-between {
+            align-content: space-between;
+        }
 
-    #align-stretch {
-      align-items: stretch;
-    }
-  </style>
+        #align-content-space-around {
+            align-content: space-around;
+        }
+
+        #align-content-stretch {
+            align-content: stretch;
+        }
+
+        .item#self-start {
+            align-self: flex-start;
+        }
+
+        .item#self-end {
+            align-self: flex-end;
+        }
+
+        .item#self-center {
+            align-self: center;
+        }
+
+        .item#self-baseline {
+            align-self: baseline;
+        }
+
+        .item#self-stretch {
+            align-self: stretch;
+        }
+    </style>
 </head>
 <body>
+    <div class="container" id="align-content-start">
+        <div class="item">Item 1</div>
+        <div class="item">Item 2</div>
+        <div class="item">Item 3</div>
+        <div class="item">Item 4</div>
+        <div class="item">Item 5</div>
+        <div class="item">Item 6</div>
+        <div class="item">Item 7</div>
+        <div class="item">Item 8</div>
+        <div class="item">Item 9</div>
+        <div class="item">Item 10</div>
+    </div>
 
-  <h2>align-items: flex-start (default)</h2>
-  <div class="container" id="align-start">
-    <div class="item">1</div>
-    <div class="item" style="font-size: 40px;">2</div>
-    <div class="item">3</div>
-  </div>
+    <div class="container" id="align-content-end">
+        <div class="item">Item 1</div>
+        <div class="item">Item 2</div>
+        <div class="item">Item 3</div>
+        <div class="item">Item 4</div>
+        <div class="item">Item 5</div>
+        <div class="item">Item 6</div>
+        <div class="item">Item 7</div>
+        <div class="item">Item 8</div>
+        <div class="item">Item 9</div>
+        <div class="item">Item 10</div>
+    </div>
 
-  <h2>align-items: flex-end</h2>
-  <div class="container" id="align-end">
-    <div class="item">1</div>
-    <div class="item" style="font-size: 40px;">2</div>
-    <div class="item">3</div>
-  </div>
+    <div class="container" id="align-content-center">
+        <div class="item">Item 1</div>
+        <div class="item">Item 2</div>
+        <div class="item">Item 3</div>
+        <div class="item">Item 4</div>
+        <div class="item">Item 5</div>
+        <div class="item">Item 6</div>
+        <div class="item">Item 7</div>
+        <div class="item">Item 8</div>
+        <div class="item">Item 9</div>
+        <div class="item">Item 10</div>
+    </div>
 
-  <h2>align-items: center</h2>
-  <div class="container" id="align-center">
-    <div class="item">1</div>
-    <div class="item" style="font-size: 40px;">2</div>
-    <div class="item">3</div>
-  </div>
+    <div class="container" id="align-content-space-between">
+        <div class="item">Item 1</div>
+        <div class="item">Item 2</div>
+        <div class="item">Item 3</div>
+        <div class="item">Item 4</div>
+        <div class="item">Item 5</div>
+        <div class="item">Item 6</div>
+        <div class="item">Item 7</div>
+        <div class="item">Item 8</div>
+        <div class="item">Item 9</div>
+        <div class="item">Item 10</div>
+    </div>
 
-  <h2>align-items: baseline</h2>
-  <div class="container" id="align-baseline">
-    <div class="item">1</div>
-    <div class="item" style="font-size: 40px;">2</div>
-    <div class="item">3</div>
-  </div>
+    <div class="container" id="align-content-space-around">
+        <div class="item">Item 1</div>
+        <div class="item">Item 2</div>
+        <div class="item">Item 3</div>
+        <div class="item">Item 4</div>
+        <div class="item">Item 5</div>
+        <div class="item">Item 6</div>
+        <div class="item">Item 7</div>
+        <div class="item">Item 8</div>
+        <div class="item">Item 9</div>
+        <div class="item">Item 10</div>
+    </div>
 
-  <h2>align-items: stretch (default if no height is set)</h2>
-  <div class="container" id="align-stretch">
-    <div class="item">1</div>
-    <div class="item" style="font-size: 40px;">2</div>
-    <div class="item">3</div>
-  </div>
+    <div class="container" id="align-content-stretch">
+        <div class="item">Item 1</div>
+        <div class="item">Item 2</div>
+        <div class="item">Item 3</div>
+        <div class="item">Item 4</div>
+        <div class="item">Item 5</div>
+        <div class="item">Item 6</div>
+        <div class="item">Item 7</div>
+        <div class="item">Item 8</div>
+        <div class="item">Item 9</div>
+        <div class="item">Item 10</div>
+    </div>
 
+    <div class="container">
+        <div class="item" id="self-start">Item 1</div>
+        <div class="item" id="self-end">Item 2</div>
+        <div class="item" id="self-center">Item 3</div>
+        <div class="item" id="self-baseline">Item 4</div>
+        <div class="item" id="self-stretch">Item 5</div>
+    </div>
 </body>
 </html>
 
-===========================================
+
+==============================================================
