@@ -1,145 +1,84 @@
-Pseudo-elements
+Attribute selectors
 
-Pseudo-elements adalah kata kunci khusus dalam CSS yang digunakan untuk memilih dan menampilkan bagian 
-tertentu dari elemen HTML.
+Attribute selectors adalah salah satu jenis selector dalam CSS yang memungkinkan Anda memilih elemen 
+berdasarkan atribut tertentu yang dimiliki oleh elemen tersebut.
 
-ada 6 Pseudo-elements :
+ada 6 Attribute selectors :
 
 =====================
 
 https://github.com/WebdevShefali/CheatSheets/blob/main/CSS%20_nth-child%20Selectors.png
 
-1. ::before dan ::after
-Digunakan untuk menambahkan konten sebelum atau setelah elemen.
-Contoh: p::before { content: "- "; }
+1. [atribut]:
+Memilih elemen yang memiliki atribut tertentu, tanpa memperhatikan nilai atributnya.
 
-2. ::selection
-Digunakan untuk mengkustomisasi tampilan teks yang sedang diseleksi oleh pengguna.
-Contoh: ::selection { background-color: #4CAF50; color: white; }
+2. [atribut="nilai"]:
+Memilih elemen yang memiliki atribut dengan nilai yang tepat sama.
 
-3. ::placeholder
-Digunakan untuk mengkustomisasi tampilan teks placeholder pada elemen input.
-Contoh: input::placeholder { color: #999; }
+3. [atribut~="nilai"]:
+Memilih elemen yang memiliki atribut dengan nilai yang merupakan salah satu kata dalam daftar kata yang dipisahkan spasi.
 
-4. ::first-line dan ::first-letter
-Digunakan untuk mengkustomisasi tampilan baris pertama atau huruf pertama dari elemen teks.
-Contoh: p::first-letter { font-size: 200%; }
+4. [atribut|="nilai"]:
+Memilih elemen yang memiliki atribut dengan nilai yang tepat sama atau diawali dengan nilai tersebut diikuti oleh tanda hubung.
 
-5. ::marker
-Digunakan untuk mengkustomisasi tampilan marker (bullet/nomor) pada elemen list.
-Contoh: ul li::marker { color: #4CAF50; }
+5. [atribut^="nilai"]:
+Memilih elemen yang memiliki atribut dengan nilai yang diawali dengan string tertentu.
 
-6. ::backdrop
-Digunakan untuk mengkustomisasi tampilan latar belakang modal atau overlay.
-Contoh: ::backdrop { background-color: rgba(0, 0, 0, 0.5); }
+6. [atribut$="nilai"]:
+Memilih elemen yang memiliki atribut dengan nilai yang diakhiri dengan string tertentu.
 
-========================================
+====================================================
 
-code nya : 
+contoh code : 
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contoh Pseudo-Elements</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-    />
-    <style>
-      /* Menambahkan ikon sebelum link */
-      a::before {
-        content: "\f105";
-        font-family: "Font Awesome 5 Free";
-        font-weight: 900;
-        margin-right: 5px;
-      }
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contoh Pemilih Atribut CSS</title>
+  <style>
+    /* 1. [atribut]: Memilih elemen yang memiliki atribut tertentu, tanpa memperhatikan nilai atributnya */
+    [type] {
+      font-weight: bold;
+    }
 
-      /* Mengubah tampilan teks yang sedang diseleksi */
-      ::selection {
-        background-color: #000000;
-        color: rgb(15, 11, 11);
-      }
+    /* 2. [atribut="nilai"]: Memilih elemen yang memiliki atribut dengan nilai yang tepat sama */
+    [type="text"] {
+      background-color: #f0f0f0;
+    }
 
-      /* Mengubah tampilan placeholder pada input */
-      input::placeholder {
-        color: #df0000;
-        font-style: italic;
-      }
+    /* 3. [atribut~="nilai"]: Memilih elemen yang memiliki atribut dengan nilai yang merupakan salah satu kata dalam daftar kata yang dipisahkan spasi */
+    [class~="important"] {
+      color: red;
+    }
 
-      /* Membuat efek "pull quote" pada paragraf */
-      p::before {
-        content: open-quote;
-        font-size: 3em;
-        line-height: 0.1em;
-        margin-right: 0.25em;
-        vertical-align: -0.4em;
-      }
+    /* 4. [atribut|="nilai"]: Memilih elemen yang memiliki atribut dengan nilai yang tepat sama atau diawali dengan nilai tersebut diikuti oleh tanda hubung */
+    [lang|="en"] {
+      font-style: italic;
+    }
 
-      p::after {
-        content: close-quote;
-        font-size: 3em;
-        line-height: 0.1em;
-        margin-left: 0.25em;
-        vertical-align: -0.4em;
-      }
+    /* 5. [atribut^="nilai"]: Memilih elemen yang memiliki atribut dengan nilai yang diawali dengan string tertentu */
+    [id^="item-"] {
+      background-color: #e0e0e0;
+    }
 
-      /* Mengubah tampilan marker pada list */
-      ul li::marker {
-        color: #4caf50;
-        font-size: 1.2em;
-      }
-
-      /* Mengatur latar belakang modal */
-      ::backdrop {
-        background-color: rgba(0, 0, 0, 0.5);
-      }
-    </style>
-  </head>
-  <body>
-    <h1>Contoh Penggunaan Pseudo-Elements</h1>
-
-    <!-- Menambahkan ikon sebelum link -->
-    <a href="#">Link 1</a>
-    <a href="#">Link 2</a>
-    <a href="#">Link 3</a>
-
-    <!-- Mengubah tampilan teks yang sedang diseleksi -->
-    <p>Seleksi teks ini untuk melihat efeknya.</p>
-
-    <!-- Mengubah tampilan placeholder pada input -->
-    <input type="text" placeholder="Masukkan teks" />
-
-    <!-- Membuat efek "pull quote" pada paragraf -->
-    <p>"Ini adalah contoh efek pull quote pada paragraf."</p>
-
-    <!-- Mengubah tampilan marker pada list -->
-    <ul>
-      <li>Item 1</li>
-      <li>Item 2</li>
-      <li>Item 3</li>
-    </ul>
-
-    <!-- Mengatur latar belakang modal -->
-    <div
-      style="
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      "
-    >
-      <div style="background-color: white; padding: 20px">
-        Ini adalah modal.
-      </div>
-    </div>
-  </body>
+    /* 6. [atribut$="nilai"]: Memilih elemen yang memiliki atribut dengan nilai yang diakhiri dengan string tertentu */
+    [href$=".pdf"] {
+      color: blue;
+    }
+  </style>
+</head>
+<body>
+  <input type="text" placeholder="Masukkan teks">
+  <input type="number" placeholder="Masukkan angka">
+  <p class="important">Ini adalah paragraf penting.</p>
+  <p lang="en">This is an English paragraph.</p>
+  <p lang="en-US">This is another English paragraph.</p>
+  <a href="document.pdf">Unduh dokumen PDF</a>
+  <div id="item-1">Ini adalah item 1</div>
+  <div id="item-2">Ini adalah item 2</div>
+</body>
 </html>
 
-
-=================================
+=================================================
