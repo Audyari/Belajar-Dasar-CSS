@@ -1,59 +1,155 @@
-grouping selector
+nth-child selector
 
-
+nth-child selector adalah salah satu selector CSS yang digunakan untuk memilih elemen-elemen HTML
+berdasarkan posisi atau urutan mereka di dalam struktur DOM (Document Object Model).
 
 =====================
 
+ada 14 cara penggunaan nth-child selector:
+
 https://github.com/WebdevShefali/CheatSheets/blob/main/CSS%20_nth-child%20Selectors.png
+
+
+1. element:nth-child(n): Memilih elemen ke-n dari induknya.
+2. element:nth-child(even): Memilih elemen genap dari induknya.
+3. element:nth-child(odd): Memilih elemen ganjil dari induknya.
+4. element:nth-child(an+b): Memilih elemen yang posisinya sesuai dengan rumus (a*n)+b, di mana n adalah bilangan bulat.
+5. element:nth-child(-n+number): Memilih elemen dari urutan paling akhir sampai elemen ke-number.
+6. element:nth-last-child(n): Memilih elemen ke-n dari bawah.
+7. element:nth-last-child(even): Memilih elemen genap dari bawah.
+8. element:nth-last-child(odd): Memilih elemen ganjil dari bawah.
+9. element:nth-last-child(an+b): Memilih elemen yang posisinya sesuai dengan rumus (a*n)+b, di mana n adalah bilangan bulat, dihitung dari bawah.
+10. element:nth-of-type(n): Memilih elemen ke-n dari jenis yang sama.
+11. element:nth-of-type(even): Memilih elemen genap dari jenis yang sama.
+12. element:nth-of-type(odd): Memilih elemen ganjil dari jenis yang sama.
+13. element:nth-of-type(an+b): Memilih elemen yang posisinya sesuai dengan rumus (a*n)+b, di mana n adalah bilangan bulat, dari jenis yang sama.
+14. element:only-child: Memilih elemen yang merupakan satu-satunya anak dari induknya.
+
+===============================================
+
+contoh code : 
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contoh Grouping Selector</title>
+    <title>nth-child Selector Examples (Circles)</title>
     <style>
-      /* CSS dengan pengelompokan selektor */
-      h1,
-      h2,
-      h3 {
-        font-family: Arial, sans-serif;
-        color: #333;
+      /* Container untuk lingkaran */
+      .circle-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: 20px 0;
       }
 
-      p,
-      span {
-        font-family: Georgia, serif;
-        font-size: 16px;
-      }
-
-      button,
-      a {
-        padding: 10px 20px;
+      /* Elemen lingkaran */
+      .circle {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
         background-color: #007bff;
-        color: #fff;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 10px;
+        font-size: 18px;
       }
 
-      button:hover,
-      a:hover {
-        background-color: #0056b3;
+      /* Memilih lingkaran ke-3 */
+      .circle:nth-child(3) {
+        background-color: #28a745;
+      }
+
+      /* Memilih lingkaran genap */
+      .circle:nth-child(even) {
+        background-color: #ffc107;
+      }
+
+      /* Memilih lingkaran ganjil */
+      .circle:nth-child(odd) {
+        background-color: #dc3545;
+      }
+
+      /* Memilih lingkaran yang posisinya sesuai dengan rumus (3n+1) */
+      .circle:nth-child(3n + 1) {
+        background-color: #6c757d;
+      }
+
+      /* Memilih 5 lingkaran terakhir */
+      .circle:nth-child(-n + 5) {
+        opacity: 0.5;
+      }
+
+      /* Memilih lingkaran kedua dari bawah */
+      .circle:nth-last-child(2) {
+        border: 2px solid #007bff;
+      }
+
+      /* Memilih sel lingkaran yang genap dihitung dari bawah */
+      .circle:nth-last-child(even) {
+        font-weight: bold;
+      }
+
+      /* Memilih lingkaran ganjil dihitung dari bawah */
+      .circle:nth-last-child(odd) {
+        font-style: italic;
+      }
+
+      /* Memilih lingkaran ganjil dihitung dari bawah dengan rumus */
+      .circle:nth-last-child(2n + 1) {
+        font-size: 22px;
+      }
+
+      /* Memilih lingkaran kedua dari jenis yang sama */
+      .circle:nth-of-type(2) {
+        background-color: #007bff;
+      }
+
+      /* Memilih lingkaran genap dari jenis yang sama */
+      .circle:nth-of-type(even) {
+        margin-right: 20px;
+      }
+
+      /* Memilih lingkaran ganjil dari jenis yang sama */
+      .circle:nth-of-type(odd) {
+        background-color: #6c757d;
+      }
+
+      /* Memilih lingkaran yang posisinya sesuai dengan rumus (3n+1) dari jenis yang sama */
+      .circle:nth-of-type(3n + 1) {
+        border: 2px solid #28a745;
+      }
+
+      /* Memilih lingkaran yang merupakan satu-satunya anak dari kontainer */
+      .circle-container > .circle:only-child {
+        background-color: #ffc107;
       }
     </style>
   </head>
   <body>
-    <h1>Welcome to Our Website</h1>
-    <p>This is a paragraph of text.</p>
-    <h2>About Us</h2>
-    <p>Here is some more information about our company.</p>
-    <button>Learn More</button>
-    <a href="#">Visit Our Blog</a>
-    <h3>Our Services</h3>
-    <span>We offer a variety of services.</span>
+    <h1>nth-child Selector Examples (Circles)</h1>
+
+    <div class="circle-container">
+      <div class="circle">1</div>
+      <div class="circle">2</div>
+      <div class="circle">3</div>
+      <div class="circle">4</div>
+      <div class="circle">5</div>
+      <div class="circle">6</div>
+      <div class="circle">7</div>
+      <div class="circle">8</div>
+      <div class="circle">9</div>
+      <div class="circle">10</div>
+      <div class="circle">11</div>
+      <div class="circle">12</div>
+      <div class="circle">13</div>
+      <div class="circle">14</div>
+    </div>
   </body>
 </html>
 
 
-=======================================
+====================================
