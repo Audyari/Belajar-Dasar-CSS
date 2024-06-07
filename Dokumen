@@ -1,102 +1,145 @@
-interactive state
+Pseudo-elements
 
-ada 7 interactive state :
+Pseudo-elements adalah kata kunci khusus dalam CSS yang digunakan untuk memilih dan menampilkan bagian 
+tertentu dari elemen HTML.
+
+ada 6 Pseudo-elements :
 
 =====================
 
 https://github.com/WebdevShefali/CheatSheets/blob/main/CSS%20_nth-child%20Selectors.png
 
-1. :hover
-Keadaan saat pengguna mengarahkan kursor/pointer di atas elemen.
-Dapat digunakan untuk mengubah tampilan elemen, seperti mengubah warna latar belakang, font, atau menampilkan tooltip.
-Contoh: button:hover { background-color: #f1f1f1; }
+1. ::before dan ::after
+Digunakan untuk menambahkan konten sebelum atau setelah elemen.
+Contoh: p::before { content: "- "; }
 
-button:hover {
-  background-color: #f1f1f1;
-}
+2. ::selection
+Digunakan untuk mengkustomisasi tampilan teks yang sedang diseleksi oleh pengguna.
+Contoh: ::selection { background-color: #4CAF50; color: white; }
 
-=====================================
-2. :active
-Keadaan saat pengguna menekan (click) dan menahan di atas elemen.
-Biasanya digunakan untuk memberi umpan balik visual saat pengguna berinteraksi dengan elemen.
-Contoh: button:active { background-color: #ddd; }
+3. ::placeholder
+Digunakan untuk mengkustomisasi tampilan teks placeholder pada elemen input.
+Contoh: input::placeholder { color: #999; }
+
+4. ::first-line dan ::first-letter
+Digunakan untuk mengkustomisasi tampilan baris pertama atau huruf pertama dari elemen teks.
+Contoh: p::first-letter { font-size: 200%; }
+
+5. ::marker
+Digunakan untuk mengkustomisasi tampilan marker (bullet/nomor) pada elemen list.
+Contoh: ul li::marker { color: #4CAF50; }
+
+6. ::backdrop
+Digunakan untuk mengkustomisasi tampilan latar belakang modal atau overlay.
+Contoh: ::backdrop { background-color: rgba(0, 0, 0, 0.5); }
+
+========================================
+
+code nya : 
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Button Active Example</title>
+    <title>Contoh Pseudo-Elements</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
     <style>
-      button {
-        background-color: #4caf50;
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
+      /* Menambahkan ikon sebelum link */
+      a::before {
+        content: "\f105";
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        margin-right: 5px;
       }
 
-      button:active {
-        background-color: #4c1212;
+      /* Mengubah tampilan teks yang sedang diseleksi */
+      ::selection {
+        background-color: #000000;
+        color: rgb(15, 11, 11);
+      }
+
+      /* Mengubah tampilan placeholder pada input */
+      input::placeholder {
+        color: #df0000;
+        font-style: italic;
+      }
+
+      /* Membuat efek "pull quote" pada paragraf */
+      p::before {
+        content: open-quote;
+        font-size: 3em;
+        line-height: 0.1em;
+        margin-right: 0.25em;
+        vertical-align: -0.4em;
+      }
+
+      p::after {
+        content: close-quote;
+        font-size: 3em;
+        line-height: 0.1em;
+        margin-left: 0.25em;
+        vertical-align: -0.4em;
+      }
+
+      /* Mengubah tampilan marker pada list */
+      ul li::marker {
+        color: #4caf50;
+        font-size: 1.2em;
+      }
+
+      /* Mengatur latar belakang modal */
+      ::backdrop {
+        background-color: rgba(0, 0, 0, 0.5);
       }
     </style>
   </head>
   <body>
-    <button>Click Me!</button>
+    <h1>Contoh Penggunaan Pseudo-Elements</h1>
+
+    <!-- Menambahkan ikon sebelum link -->
+    <a href="#">Link 1</a>
+    <a href="#">Link 2</a>
+    <a href="#">Link 3</a>
+
+    <!-- Mengubah tampilan teks yang sedang diseleksi -->
+    <p>Seleksi teks ini untuk melihat efeknya.</p>
+
+    <!-- Mengubah tampilan placeholder pada input -->
+    <input type="text" placeholder="Masukkan teks" />
+
+    <!-- Membuat efek "pull quote" pada paragraf -->
+    <p>"Ini adalah contoh efek pull quote pada paragraf."</p>
+
+    <!-- Mengubah tampilan marker pada list -->
+    <ul>
+      <li>Item 1</li>
+      <li>Item 2</li>
+      <li>Item 3</li>
+    </ul>
+
+    <!-- Mengatur latar belakang modal -->
+    <div
+      style="
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      "
+    >
+      <div style="background-color: white; padding: 20px">
+        Ini adalah modal.
+      </div>
+    </div>
   </body>
 </html>
 
 
-=================================================
-:focus
-Keadaan saat elemen mendapatkan fokus, biasanya saat pengguna mengklik atau tab pada elemen.
-Digunakan untuk memberikan indikasi visual bahwa elemen sedang dalam fokus, seperti mengubah warna batas.
-Contoh: input:focus { border-color: #4CAF50; }
-
-input:focus {
-  border-color: #4CAF50;
-}
-
-===================================
-:visited
-Keadaan saat pengguna telah mengunjungi (mengklik) link sebelumnya.
-Digunakan untuk memberikan tampilan yang berbeda untuk link yang sudah dikunjungi.
-Contoh: a:visited { color: purple; }
-
-a:visited {
-  color: purple;
-}
-
-====================================
-:disabled
-Keadaan saat elemen sedang dalam keadaan tidak aktif (disabled).
-Digunakan untuk memberikan tampilan dan interaksi yang berbeda untuk elemen yang tidak dapat dioperasikan.
-Contoh: button:disabled { opacity: 0.6; cursor: not-allowed; }
-
-button:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-
-======================================
-:enabled
-Keadaan kebalikan dari :disabled, yaitu saat elemen dalam keadaan aktif.
-Digunakan untuk memberikan tampilan dan interaksi yang berbeda untuk elemen yang dapat dioperasikan.
-Contoh: button:enabled { opacity: 1; cursor: pointer; }
-
-button:enabled {
-  opacity: 1;
-  cursor: pointer;
-}
-===============================
-:checked
-Keadaan saat elemen checkbox atau radio button sedang dalam keadaan terpilih (checked).
-Digunakan untuk memberikan tampilan yang berbeda untuk elemen yang sedang dipilih.
-Contoh: input[type="checkbox"]:checked { background-color: #4CAF50; }
-
-input[type="checkbox"]:checked {
-  background-color: #4CAF50;
-}
-
-==================================
+=================================
