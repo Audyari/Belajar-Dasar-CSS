@@ -1,31 +1,23 @@
-nth-child selector
-
-nth-child selector adalah salah satu selector CSS yang digunakan untuk memilih elemen-elemen HTML
-berdasarkan posisi atau urutan mereka di dalam struktur DOM (Document Object Model).
+css display value cheatsheet
 
 =====================
 
-ada 14 cara penggunaan nth-child selector:
+ada 10 display di css
 
-https://github.com/WebdevShefali/CheatSheets/blob/main/CSS%20_nth-child%20Selectors.png
+https://github.com/WebdevShefali/CheatSheets/blob/main/CSS-display-cheatsheet.png
 
+block: Menampilkan elemen sebagai elemen level-blok
+inline: Menampilkan elemen sebagai elemen level-inline
+inline-block: Menampilkan elemen sebagai kontainer blok level-inline
+flex: Menampilkan elemen sebagai kontainer flex level-blok
+inline-flex: Menampilkan elemen sebagai kontainer flex level-inline
+grid: Menampilkan elemen sebagai kontainer grid level-blok
+inline-grid: Menampilkan elemen sebagai kontainer grid level-inline
+none: Menghapus elemen dari aliran dokumen
+table, table-cell, table-row, table-column, table-caption: Menampilkan elemen sebagai elemen-elemen tabel
+list-item: Menampilkan elemen sebagai item daftar
 
-1. element:nth-child(n): Memilih elemen ke-n dari induknya.
-2. element:nth-child(even): Memilih elemen genap dari induknya.
-3. element:nth-child(odd): Memilih elemen ganjil dari induknya.
-4. element:nth-child(an+b): Memilih elemen yang posisinya sesuai dengan rumus (a*n)+b, di mana n adalah bilangan bulat.
-5. element:nth-child(-n+number): Memilih elemen dari urutan paling akhir sampai elemen ke-number.
-6. element:nth-last-child(n): Memilih elemen ke-n dari bawah.
-7. element:nth-last-child(even): Memilih elemen genap dari bawah.
-8. element:nth-last-child(odd): Memilih elemen ganjil dari bawah.
-9. element:nth-last-child(an+b): Memilih elemen yang posisinya sesuai dengan rumus (a*n)+b, di mana n adalah bilangan bulat, dihitung dari bawah.
-10. element:nth-of-type(n): Memilih elemen ke-n dari jenis yang sama.
-11. element:nth-of-type(even): Memilih elemen genap dari jenis yang sama.
-12. element:nth-of-type(odd): Memilih elemen ganjil dari jenis yang sama.
-13. element:nth-of-type(an+b): Memilih elemen yang posisinya sesuai dengan rumus (a*n)+b, di mana n adalah bilangan bulat, dari jenis yang sama.
-14. element:only-child: Memilih elemen yang merupakan satu-satunya anak dari induknya.
-
-===============================================
+==================================
 
 contoh code : 
 
@@ -34,122 +26,115 @@ contoh code :
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>nth-child Selector Examples (Circles)</title>
+    <title>CSS Display Cheatsheet</title>
     <style>
-      /* Container untuk lingkaran */
-      .circle-container {
+      /* Gaya CSS untuk contoh */
+      .block {
+        display: block;
+      }
+      .inline {
+        display: inline;
+      }
+      .inline-block {
+        display: inline-block;
+      }
+      .flex {
         display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        margin: 20px 0;
       }
-
-      /* Elemen lingkaran */
-      .circle {
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
-        background-color: #007bff;
-        color: white;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: 10px;
-        font-size: 18px;
+      .inline-flex {
+        display: inline-flex;
       }
-
-      /* Memilih lingkaran ke-3 */
-      .circle:nth-child(3) {
-        background-color: #28a745;
+      .grid {
+        display: grid;
       }
-
-      /* Memilih lingkaran genap */
-      .circle:nth-child(even) {
-        background-color: #ffc107;
+      .inline-grid {
+        display: inline-grid;
       }
-
-      /* Memilih lingkaran ganjil */
-      .circle:nth-child(odd) {
-        background-color: #dc3545;
+      .none {
+        display: none;
       }
-
-      /* Memilih lingkaran yang posisinya sesuai dengan rumus (3n+1) */
-      .circle:nth-child(3n + 1) {
-        background-color: #6c757d;
+      .table {
+        display: table;
       }
-
-      /* Memilih 5 lingkaran terakhir */
-      .circle:nth-child(-n + 5) {
-        opacity: 0.5;
-      }
-
-      /* Memilih lingkaran kedua dari bawah */
-      .circle:nth-last-child(2) {
-        border: 2px solid #007bff;
-      }
-
-      /* Memilih sel lingkaran yang genap dihitung dari bawah */
-      .circle:nth-last-child(even) {
-        font-weight: bold;
-      }
-
-      /* Memilih lingkaran ganjil dihitung dari bawah */
-      .circle:nth-last-child(odd) {
-        font-style: italic;
-      }
-
-      /* Memilih lingkaran ganjil dihitung dari bawah dengan rumus */
-      .circle:nth-last-child(2n + 1) {
-        font-size: 22px;
-      }
-
-      /* Memilih lingkaran kedua dari jenis yang sama */
-      .circle:nth-of-type(2) {
-        background-color: #007bff;
-      }
-
-      /* Memilih lingkaran genap dari jenis yang sama */
-      .circle:nth-of-type(even) {
-        margin-right: 20px;
-      }
-
-      /* Memilih lingkaran ganjil dari jenis yang sama */
-      .circle:nth-of-type(odd) {
-        background-color: #6c757d;
-      }
-
-      /* Memilih lingkaran yang posisinya sesuai dengan rumus (3n+1) dari jenis yang sama */
-      .circle:nth-of-type(3n + 1) {
-        border: 2px solid #28a745;
-      }
-
-      /* Memilih lingkaran yang merupakan satu-satunya anak dari kontainer */
-      .circle-container > .circle:only-child {
-        background-color: #ffc107;
+      .list-item {
+        display: list-item;
       }
     </style>
   </head>
   <body>
-    <h1>nth-child Selector Examples (Circles)</h1>
+    <h1 style="border: 10px">CSS Display Cheatsheet</h1>
 
-    <div class="circle-container">
-      <div class="circle">1</div>
-      <div class="circle">2</div>
-      <div class="circle">3</div>
-      <div class="circle">4</div>
-      <div class="circle">5</div>
-      <div class="circle">6</div>
-      <div class="circle">7</div>
-      <div class="circle">8</div>
-      <div class="circle">9</div>
-      <div class="circle">10</div>
-      <div class="circle">11</div>
-      <div class="circle">12</div>
-      <div class="circle">13</div>
-      <div class="circle">14</div>
+    <h2>block</h2>
+    <div class="block">Ini adalah elemen level-blok.</div>
+    <div class="block">Ini adalah elemen level-blok.</div>
+
+    <h2>inline</h2>
+    <span class="inline">Ini adalah elemen level-inline 1.</span>
+    <span class="inline">Ini adalah elemen level-inline 2.</span>
+
+    <h2>inline-block</h2>
+    <div class="inline-block">Ini adalah elemen level-inline-block 1.</div>
+    <div class="inline-block">Ini adalah elemen level-inline-block 2.</div>
+
+    <h2>flex</h2>
+    <div class="flex">
+      <div>Elemen 1</div>
+      <div>Elemen 2</div>
+      <div>Elemen 3</div>
     </div>
+
+    <h2>inline-flex</h2>
+    <div class="inline-flex">
+      <div>Elemen 1</div>
+      <div>Elemen 2</div>
+      <div>Elemen 3</div>
+    </div>
+
+    <h2>grid</h2>
+    <div class="grid" style="grid-template-columns: repeat(3, 1fr)">
+      <div>Elemen 1</div>
+      <div>Elemen 2</div>
+      <div>Elemen 3</div>
+      <div>Elemen 4</div>
+      <div>Elemen 5</div>
+      <div>Elemen 6</div>
+    </div>
+
+    <h2>inline-grid</h2>
+    <div class="inline-grid" style="grid-template-columns: repeat(3, 1fr)">
+      <div>Elemen 1</div>
+      <div>Elemen 2</div>
+      <div>Elemen 3</div>
+      <div>Elemen 4</div>
+      <div>Elemen 5</div>
+      <div>Elemen 6</div>
+    </div>
+
+    <h2>none</h2>
+    <div class="none">Elemen ini tidak akan ditampilkan.</div>
+
+    <h2>table</h2>
+    <div class="table">
+      <div class="table-row">
+        <div class="table-cell">Sel 1</div>
+        <div class="table-cell">Sel 2</div>
+        <div class="table-cell">Sel 3</div>
+      </div>
+      <div class="table-row">
+        <div class="table-cell">Sel 4</div>
+        <div class="table-cell">Sel 5</div>
+        <div class="table-cell">Sel 6</div>
+      </div>
+    </div>
+
+    <h2>list-item</h2>
+    <ul>
+      <li class="list-item">Item 1</li>
+      <li class="list-item">Item 2</li>
+      <li class="list-item">Item 3</li>
+    </ul>
   </body>
 </html>
 
 
-====================================
+=========================================
