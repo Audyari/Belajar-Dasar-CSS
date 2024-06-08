@@ -1,21 +1,16 @@
-css display value cheatsheet
+css posisitions cheatsheet
 
 =====================
 
-ada 10 display di css
+ada 5 posisitions di css
 
-https://github.com/WebdevShefali/CheatSheets/blob/main/CSS-display-cheatsheet.png
+https://github.com/WebdevShefali/CheatSheets/blob/main/CSS-positions-cheatsheet.png
 
-block: Menampilkan elemen sebagai elemen level-blok
-inline: Menampilkan elemen sebagai elemen level-inline
-inline-block: Menampilkan elemen sebagai kontainer blok level-inline
-flex: Menampilkan elemen sebagai kontainer flex level-blok
-inline-flex: Menampilkan elemen sebagai kontainer flex level-inline
-grid: Menampilkan elemen sebagai kontainer grid level-blok
-inline-grid: Menampilkan elemen sebagai kontainer grid level-inline
-none: Menghapus elemen dari aliran dokumen
-table, table-cell, table-row, table-column, table-caption: Menampilkan elemen sebagai elemen-elemen tabel
-list-item: Menampilkan elemen sebagai item daftar
+1. position: static (default): Elemen diposisikan sesuai dengan alur normal dokumen.
+2. position: relative: Elemen diposisikan relatif terhadap posisi normalnya, dan dapat digeser dengan top, right, bottom, dan left.
+3. position: absolute: Elemen diposisikan berdasarkan elemen induk terdekat yang tidak memiliki posisi static. Jika tidak ada elemen induk, maka elemen akan diposisikan relative terhadap body.
+4. position: fixed: Elemen diposisikan relatif terhadap viewport, sehingga akan tetap pada posisi yang sama meskipun halaman di-scroll.
+5. position: sticky: Elemen diposisikan berdasarkan posisi scroll pengguna. Elemen akan tetap pada posisi yang sama sampai titik tertentu, lalu akan mengikuti alur normal dokumen.
 
 ==================================
 
@@ -26,138 +21,112 @@ contoh code :
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CSS Display Cheatsheet</title>
+    <title>CSS Positions Cheatsheet</title>
     <style>
-      /* Gaya CSS untuk contoh */
-      .block {
-        display: block;
-        border: 5px solid blue;
-        background-color: aqua;
+      /* Container */
+      .container {
+        width: 400px;
+        height: 600px;
+        border: 2px solid #671f1f;
+        position: relative;
+        padding: 20px;
       }
-      .inline {
-        display: inline;
-        border: 5px solid blue;
-        background-color: aqua;
+
+      /* Elemen Posisi */
+      .position-static {
+        position: static;
       }
-      .inline-block {
-        display: inline-block;
-        border: 5px solid blue;
-        background-color: aqua;
+      .position-relative {
+        position: relative;
       }
-      .flex {
-        display: flex;
-        border: 5px solid blue;
-        background-color: aqua;
+      .position-absolute {
+        position: absolute;
       }
-      .inline-flex {
-        display: inline-flex;
-        border: 5px solid blue;
-        background-color: aqua;
+      .position-fixed {
+        position: fixed;
       }
-      .grid {
-        display: grid;
-        border: 5px solid blue;
-        background-color: aqua;
+      .position-sticky {
+        position: sticky;
       }
-      .inline-grid {
-        display: inline-grid;
-        border: 5px solid blue;
-        background-color: aqua;
+
+      /* Gaya Elemen Posisi */
+      .position-element {
+        width: 100px;
+        height: 150px;
+        background-color: #f1f1f1;
+        padding: 20px;
+        margin-bottom: 20px;
+        margin-top: 20px;
       }
-      .none {
-        display: none;
-        border: 5px solid blue;
-        background-color: aqua;
+
+      .position-relative-example {
+        top: 20px;
+        left: 20px;
       }
-      .table {
-        display: table;
-        border: 5px solid blue;
-        background-color: aqua;
+
+      .position-relative-example1 {
+        top: 120px;
+        left: 120px;
       }
-      .list-item {
-        display: list-item;
-        border: 5px solid blue;
-        background-color: aqua;
+
+      .position-absolute-example {
+        top: 50px;
+        right: 50px;
+      }
+
+      .position-fixed-example {
+        bottom: 20px;
+        left: 20px;
+      }
+
+      .position-sticky-example {
+        top: 10;
+        margin-left: 10px;
       }
     </style>
   </head>
   <body>
-    <h1 style="border: 10px">CSS Display Cheatsheet</h1>
+    <h1>CSS Positions Cheatsheet</h1>
 
-    <h2>block</h2>
-    <div class="block">Ini adalah elemen level-blok.</div>
-    <div class="block">Ini adalah elemen level-blok.</div>
-
-    <h2>inline</h2>
-    <span class="inline">Ini adalah elemen level-inline 1.</span>
-    <span class="inline">Ini adalah elemen level-inline 2.</span>
-    <span class="inline">Ini adalah elemen level-inline 1.</span>
-    <span class="inline">Ini adalah elemen level-inline 2.</span>
-
-    <h2>inline-block</h2>
-    <div class="inline-block">Ini adalah elemen level-inline-block 1.</div>
-    <div class="inline-block">Ini adalah elemen level-inline-block 2.</div>
-    <div class="inline-block">Ini adalah elemen level-inline-block 1.</div>
-    <div class="inline-block">Ini adalah elemen level-inline-block 2.</div>
-
-    <h2>flex</h2>
-    <div class="flex">
-      <div>Elemen 1</div>
-      <div>Elemen 2</div>
-      <div>Elemen 3</div>
-    </div>
-
-    <h2>inline-flex</h2>
-    <div class="inline-flex">
-      <div>Elemen 1</div>
-      <div>Elemen 2</div>
-      <div>Elemen 3</div>
-    </div>
-
-    <h2>grid</h2>
-    <div class="grid" style="grid-template-columns: repeat(3, 1fr)">
-      <div>Elemen 1</div>
-      <div>Elemen 2</div>
-      <div>Elemen 3</div>
-      <div>Elemen 4</div>
-      <div>Elemen 5</div>
-      <div>Elemen 6</div>
-    </div>
-
-    <h2>inline-grid</h2>
-    <div class="inline-grid" style="grid-template-columns: repeat(3, 1fr)">
-      <div>Elemen 1</div>
-      <div>Elemen 2</div>
-      <div>Elemen 3</div>
-      <div>Elemen 4</div>
-      <div>Elemen 5</div>
-      <div>Elemen 6</div>
-    </div>
-
-    <h2>none</h2>
-    <div class="none">Elemen ini tidak akan ditampilkan.</div>
-
-    <h2>table</h2>
-    <div class="table">
-      <div class="table-row">
-        <div class="table-cell">Sel 1</div>
-        <div class="table-cell">Sel 2</div>
-        <div class="table-cell">Sel 3</div>
+    <div class="container">
+      <h2>position: static (default)</h2>
+      <div class="position-element position-static">
+        Elemen dengan posisi static
       </div>
-      <div class="table-row">
-        <div class="table-cell">Sel 4</div>
-        <div class="table-cell">Sel 5</div>
-        <div class="table-cell">Sel 6</div>
+      <div class="position-element position-static">
+        Elemen dengan posisi static
+      </div>
+
+      <h2>position: relative</h2>
+      <div class="position-element position-relative position-relative-example">
+        Elemen dengan posisi relative
+      </div>
+      <div
+        class="position-element position-relative position-relative-example1"
+      >
+        Elemen dengan posisi relative
+      </div>
+
+      <h2>position: absolute</h2>
+      <div class="position-element position-absolute position-absolute-example">
+        Elemen dengan posisi absolute
+      </div>
+      <div class="position-element position-absolute">
+        Elemen dengan posisi absolute
+      </div>
+
+      <h2>position: fixed</h2>
+      <div class="position-element position-fixed position-fixed-example">
+        Elemen dengan posisi fixed
+      </div>
+
+      <h2>position: sticky</h2>
+      <div class="position-element position-sticky position-sticky-example">
+        Elemen dengan posisi sticky
       </div>
     </div>
-
-    <h2>list-item</h2>
-    <ul>
-      <li class="list-item">Item 1</li>
-      <li class="list-item">Item 2</li>
-      <li class="list-item">Item 3</li>
-    </ul>
   </body>
 </html>
+
 
 =========================================
