@@ -1,20 +1,34 @@
-css posisitions cheatsheet
+flex sizing property
 
 =====================
 
-ada 5 posisitions di css
+ada 3 flex sizing property di css :
 
-https://github.com/WebdevShefali/CheatSheets/blob/main/CSS-positions-cheatsheet.png
+* flex-grow mengatur pertumbuhan item
+* flex-shrink mengatur penyusutan item
+* flex-basis mengatur ukuran awal item
 
-1. position: static (default): Elemen diposisikan sesuai dengan alur normal dokumen.
-2. position: relative: Elemen diposisikan relatif terhadap posisi normalnya, dan dapat digeser dengan top, right, bottom, dan left.
-3. position: absolute: Elemen diposisikan berdasarkan elemen induk terdekat yang tidak memiliki posisi static. Jika tidak ada elemen induk, maka elemen akan diposisikan relative terhadap body.
-4. position: fixed: Elemen diposisikan relatif terhadap viewport, sehingga akan tetap pada posisi yang sama meskipun halaman di-scroll.
-5. position: sticky: Elemen diposisikan berdasarkan posisi scroll pengguna. Elemen akan tetap pada posisi yang sama sampai titik tertentu, lalu akan mengikuti alur normal dokumen.
+https://github.com/WebdevShefali/CheatSheets/blob/main/Flexbox-cheatsheet.jpg
 
+1. flex-grow:
+Properti ini mengatur kemampuan elemen untuk tumbuh dan mengisi ruang yang tersedia dalam kontainer Flexbox.
+Nilai default-nya adalah 0, yang berarti elemen tidak akan tumbuh.
+Nilai yang diberikan menunjukkan proporsi ruang yang akan diisi elemen.
+
+2. flex-shrink:
+Properti ini mengatur kemampuan elemen untuk menyusut jika diperlukan dalam kontainer Flexbox.
+Nilai default-nya adalah 1, yang berarti elemen akan menyusut jika diperlukan.
+Nilai yang diberikan menunjukkan proporsi ruang yang akan dilepaskan elemen saat menyusut.
+
+3. flex-basis:
+Properti ini mengatur ukuran awal elemen sebelum distribusi ruang yang tersedia dalam kontainer Flexbox.
+Nilai default-nya adalah auto, yang berarti ukuran elemen akan ditentukan oleh konten di dalamnya.
+Nilai yang diberikan dapat berupa ukuran absolut (px, em, etc) atau relatif (%).
 ==================================
 
 contoh code : 
+
+1. flex-grow:
 
 <!DOCTYPE html>
 <html lang="en">
@@ -23,110 +37,136 @@ contoh code :
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CSS Positions Cheatsheet</title>
     <style>
-      /* Container */
       .container {
-        width: 400px;
-        height: 600px;
-        border: 2px solid #671f1f;
-        position: relative;
-        padding: 20px;
+        display: flex;
+        width: 100%;
+        height: 200px;
+        border: 2px solid black;
       }
 
-      /* Elemen Posisi */
-      .position-static {
-        position: static;
-      }
-      .position-relative {
-        position: relative;
-      }
-      .position-absolute {
-        position: absolute;
-      }
-      .position-fixed {
-        position: fixed;
-      }
-      .position-sticky {
-        position: sticky;
+      .item1 {
+        flex-grow: 1;
+        border: 2px solid black;
       }
 
-      /* Gaya Elemen Posisi */
-      .position-element {
-        width: 100px;
-        height: 150px;
-        background-color: #f1f1f1;
-        padding: 20px;
-        margin-bottom: 20px;
-        margin-top: 20px;
+      .item2 {
+        flex-grow: 2;
+        border: 2px solid black;
       }
 
-      .position-relative-example {
-        top: 20px;
-        left: 20px;
-      }
-
-      .position-relative-example1 {
-        top: 120px;
-        left: 120px;
-      }
-
-      .position-absolute-example {
-        top: 50px;
-        right: 50px;
-      }
-
-      .position-fixed-example {
-        bottom: 20px;
-        left: 20px;
-      }
-
-      .position-sticky-example {
-        top: 10;
-        margin-left: 10px;
+      .item3 {
+        flex-grow: 0;
+        border: 2px solid black;
       }
     </style>
   </head>
   <body>
-    <h1>CSS Positions Cheatsheet</h1>
-
     <div class="container">
-      <h2>position: static (default)</h2>
-      <div class="position-element position-static">
-        Elemen dengan posisi static
-      </div>
-      <div class="position-element position-static">
-        Elemen dengan posisi static
-      </div>
+      <div class="item1">Item 1</div>
+      <div class="item2">Item 2</div>
+      <div class="item3">Item 3</div>
+    </div>
+  </body>
+</html>
 
-      <h2>position: relative</h2>
-      <div class="position-element position-relative position-relative-example">
-        Elemen dengan posisi relative
-      </div>
-      <div
-        class="position-element position-relative position-relative-example1"
-      >
-        Elemen dengan posisi relative
-      </div>
+======================================
 
-      <h2>position: absolute</h2>
-      <div class="position-element position-absolute position-absolute-example">
-        Elemen dengan posisi absolute
-      </div>
-      <div class="position-element position-absolute">
-        Elemen dengan posisi absolute
-      </div>
+2. flex-shrink:
 
-      <h2>position: fixed</h2>
-      <div class="position-element position-fixed position-fixed-example">
-        Elemen dengan posisi fixed
-      </div>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Positions Cheatsheet</title>
+    <style>
+      .container {
+        display: flex;
+        width: 300px;
+        border: 1px solid #ccc;
+      }
 
-      <h2>position: sticky</h2>
-      <div class="position-element position-sticky position-sticky-example">
-        Elemen dengan posisi sticky
-      </div>
+      .item1 {
+        flex-shrink: 10;
+        padding: 10px;
+        background-color: #f1f1f1;
+        border-right: 1px solid #ccc;
+      }
+
+      .item2 {
+        flex-shrink: 20;
+        padding: 10px;
+        background-color: #f5f5f5;
+        border-right: 1px solid #ccc;
+      }
+
+      .item3 {
+        flex-shrink: 10;
+        padding: 10px;
+        background-color: #f9f9f9;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="item1">Item 1</div>
+      <div class="item2">Item 2</div>
+      <div class="item3">Item 3</div>
     </div>
   </body>
 </html>
 
 
+
 =========================================
+
+3. flex-basis:
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Positions Cheatsheet</title>
+    <style>
+      .container {
+        display: flex;
+        width: 500px;
+        border: 1px solid #ccc;
+      }
+
+      .item1 {
+        flex-basis: 100px;
+        flex-grow: 1;
+        padding: 10px;
+        background-color: #f1f1f1;
+        border-right: 1px solid #ccc;
+      }
+
+      .item2 {
+        flex-basis: 200px;
+        flex-grow: 1;
+        padding: 10px;
+        background-color: #f5f5f5;
+        border-right: 1px solid #ccc;
+      }
+
+      .item3 {
+        flex-basis: 300px;
+        flex-grow: 1;
+        padding: 10px;
+        background-color: #f9f9f9;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="item1">Item 1</div>
+      <div class="item2">Item 2</div>
+      <div class="item3">Item 3</div>
+    </div>
+  </body>
+</html>
+
+
+=======================================
