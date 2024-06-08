@@ -31,33 +31,53 @@ contoh code :
       /* Gaya CSS untuk contoh */
       .block {
         display: block;
+        border: 5px solid blue;
+        background-color: aqua;
       }
       .inline {
         display: inline;
+        border: 5px solid blue;
+        background-color: aqua;
       }
       .inline-block {
         display: inline-block;
+        border: 5px solid blue;
+        background-color: aqua;
       }
       .flex {
         display: flex;
+        border: 5px solid blue;
+        background-color: aqua;
       }
       .inline-flex {
         display: inline-flex;
+        border: 5px solid blue;
+        background-color: aqua;
       }
       .grid {
         display: grid;
+        border: 5px solid blue;
+        background-color: aqua;
       }
       .inline-grid {
         display: inline-grid;
+        border: 5px solid blue;
+        background-color: aqua;
       }
       .none {
         display: none;
+        border: 5px solid blue;
+        background-color: aqua;
       }
       .table {
         display: table;
+        border: 5px solid blue;
+        background-color: aqua;
       }
       .list-item {
         display: list-item;
+        border: 5px solid blue;
+        background-color: aqua;
       }
     </style>
   </head>
@@ -71,8 +91,12 @@ contoh code :
     <h2>inline</h2>
     <span class="inline">Ini adalah elemen level-inline 1.</span>
     <span class="inline">Ini adalah elemen level-inline 2.</span>
+    <span class="inline">Ini adalah elemen level-inline 1.</span>
+    <span class="inline">Ini adalah elemen level-inline 2.</span>
 
     <h2>inline-block</h2>
+    <div class="inline-block">Ini adalah elemen level-inline-block 1.</div>
+    <div class="inline-block">Ini adalah elemen level-inline-block 2.</div>
     <div class="inline-block">Ini adalah elemen level-inline-block 1.</div>
     <div class="inline-block">Ini adalah elemen level-inline-block 2.</div>
 
@@ -135,6 +159,5 @@ contoh code :
     </ul>
   </body>
 </html>
-
 
 =========================================
