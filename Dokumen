@@ -1,12 +1,27 @@
-css grid cheatsheet
+UI bergaya Fallout menggunakan CSS modern:
 
 =====================
 
-https://github.com/WebdevShefali/CheatSheets/blob/main/Grid-cheatsheet.png
+https://www.codemotion.com/magazine/frontend/creating-a-fallout-style-ui-using-modern-css/?ref=dailydev
 
 
 
 =================================
+
+Dalam contoh sederhana ini, kita menggunakan font monospace "VT323" untuk menciptakan tampilan retro-futuristik, 
+serta mengaplikasikan beberapa efek visual menggunakan CSS:
+
+1. Efek CRT (Cathode Ray Tube): Menggunakan linear-gradient dan animasi @keyframes untuk meniru efek "horizontal band" pada monitor tabung katoda.
+2. Efek Scanline: Menggunakan mask-image dengan gambar PNG transparan untuk menciptakan efek garis pada container utama.
+3. Efek Peringatan Berkedip: Menggunakan @keyframes untuk membuat animasi teks berkedip pada elemen peringatan.
+
+Struktur HTML yang sederhana terdiri dari <h1>, <p>, dan elemen peringatan <div> yang ditempatkan dalam container utama. 
+Gaya CSS diterapkan pada elemen-elemen ini untuk menciptakan tampilan yang sesuai dengan tema Fallout.
+
+
+
+
+
 
 code nya
 
@@ -14,82 +29,84 @@ code nya
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Responsive Design Example</title>
-    <style>
-      .container {
-        display: grid;
-        /* grid-template-columns: 300px 1fr 400px;
-        grid-template-rows: 50px 1fr 75px; */
-        column-gap: 10px;
-      }
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fallout-Inspired UI</title>
+  <style>
+    /* General Styles */
+    body {
+      font-family: 'VT323', monospace;
+      background-color: #000;
+      color: #adff2f;
+      margin: 0;
+      padding: 0;
+    }
 
-      .item {
-        border: 1px solid #ccc;
-      }
+    .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      position: relative;
+      overflow: hidden;
+    }
 
-      .item1 {
-        grid-column: 1;
-        grid-row: 1;
-      }
+    /* CRT Effect */
+    .container::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, rgba(173, 255, 47, 0.1) 50%, rgba(173, 255, 47, 0) 50%);
+      background-size: 100% 30px;
+      animation: crt-effect 0.5s infinite linear;
+    }
 
-      .item2 {
-        grid-column: 2;
-        grid-row: 1;
-      }
+    /* Scanline Effect */
+    .container::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAGklEQVQYV2NkYGD4D8QwMjLCHyiGMQIAXNAB/q8iO9YAAAAASUVORK5CYII=");
+      opacity: 0.1;
+    }
 
-      .item3 {
-        grid-column: 3;
-        grid-row: 1;
-      }
+    /* Blinking Warning Effect */
+    .warning {
+      font-size: 2rem;
+      animation: blink 0.5s infinite;
+    }
 
-      .item4 {
-        grid-column: 1;
-        grid-row: 2;
+    @keyframes blink {
+      50% {
+        opacity: 0;
       }
+    }
 
-      .item5 {
-        grid-column: 2;
-        grid-row: 2;
+    @keyframes crt-effect {
+      0% {
+        background-position: 0 0;
       }
-
-      .item6 {
-        grid-column: 3;
-        grid-row: 2;
+      100% {
+        background-position: 0 30px;
       }
-
-      .item7 {
-        grid-column: 1;
-        grid-row: 3;
-      }
-
-      .item8 {
-        grid-column: 2;
-        grid-row: 3;
-      }
-
-      .item9 {
-        grid-column: 3;
-        grid-row: 3;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <div class="item item1">Item 1</div>
-      <div class="item item2">Item 2</div>
-      <div class="item item3">Item 3</div>
-      <div class="item item4">Item 4</div>
-      <div class="item item5">Item 5</div>
-      <div class="item item6">Item 6</div>
-      <div class="item item7">Item 7</div>
-      <div class="item item8">Item 8</div>
-      <div class="item item9">Item 9</div>
-    </div>
-  </body>
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Welcome to the Fallout-Inspired UI</h1>
+    <p>This is a simple example of a Fallout-inspired user interface using modern CSS.</p>
+    <div class="warning">WARNING: Radiation Levels Critical</div>
+  </div>
+</body>
 </html>
-
 
 ==================================================
