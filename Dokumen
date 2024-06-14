@@ -1,112 +1,235 @@
-UI bergaya Fallout menggunakan CSS modern:
+Contoh Tanpa Framework CSS
 
 =====================
 
-https://www.codemotion.com/magazine/frontend/creating-a-fallout-style-ui-using-modern-css/?ref=dailydev
-
-
+ADA 7 Stepp nya :
 
 =================================
-
-Dalam contoh sederhana ini, kita menggunakan font monospace "VT323" untuk menciptakan tampilan retro-futuristik, 
-serta mengaplikasikan beberapa efek visual menggunakan CSS:
-
-1. Efek CRT (Cathode Ray Tube): Menggunakan linear-gradient dan animasi @keyframes untuk meniru efek "horizontal band" pada monitor tabung katoda.
-2. Efek Scanline: Menggunakan mask-image dengan gambar PNG transparan untuk menciptakan efek garis pada container utama.
-3. Efek Peringatan Berkedip: Menggunakan @keyframes untuk membuat animasi teks berkedip pada elemen peringatan.
-
-Struktur HTML yang sederhana terdiri dari <h1>, <p>, dan elemen peringatan <div> yang ditempatkan dalam container utama. 
-Gaya CSS diterapkan pada elemen-elemen ini untuk menciptakan tampilan yang sesuai dengan tema Fallout.
-
-
-
-
-
-
-code nya
-
-=============================
+Buat index.html :
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fallout-Inspired UI</title>
-  <style>
-    /* General Styles */
-    body {
-      font-family: 'VT323', monospace;
-      background-color: #000;
-      color: #adff2f;
-      margin: 0;
-      padding: 0;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contoh Tanpa Framework CSS</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="text-center">
+      <h1>Selamat Datang di Situs Saya</h1>
+    </header>
 
-    .container {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      position: relative;
-      overflow: hidden;
-    }
+    <div class="container">
+      <section class="card">
+        <h1>Judul Kartu</h1>
+        <p>Ini adalah konten kartu.</p>
+      </section>
 
-    /* CRT Effect */
-    .container::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(to bottom, rgba(173, 255, 47, 0.1) 50%, rgba(173, 255, 47, 0) 50%);
-      background-size: 100% 30px;
-      animation: crt-effect 0.5s infinite linear;
-    }
+      <nav class="navbar">
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+      </nav>
 
-    /* Scanline Effect */
-    .container::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAGklEQVQYV2NkYGD4D8QwMjLCHyiGMQIAXNAB/q8iO9YAAAAASUVORK5CYII=");
-      opacity: 0.1;
-    }
+      <div class="grid-container">
+        <div class="grid-item">Item 1</div>
+        <div class="grid-item">Item 2</div>
+        <div class="grid-item">Item 3</div>
+      </div>
 
-    /* Blinking Warning Effect */
-    .warning {
-      font-size: 2rem;
-      animation: blink 0.5s infinite;
-    }
+      <button class="button">Klik Saya</button>
+    </div>
 
-    @keyframes blink {
-      50% {
-        opacity: 0;
-      }
-    }
-
-    @keyframes crt-effect {
-      0% {
-        background-position: 0 0;
-      }
-      100% {
-        background-position: 0 30px;
-      }
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h1>Welcome to the Fallout-Inspired UI</h1>
-    <p>This is a simple example of a Fallout-inspired user interface using modern CSS.</p>
-    <div class="warning">WARNING: Radiation Levels Critical</div>
-  </div>
-</body>
+    <footer class="text-center">
+      <p>Hak Cipta &copy; 2024</p>
+    </footer>
+  </body>
 </html>
 
-==================================================
+
+===========================================
+
+1. CSS Reset
+Mulailah dengan CSS reset untuk menghapus gaya default browser.
+
+/* CSS Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+===========================================
+
+2. Tema dengan Variabel CSS
+Menggunakan variabel CSS untuk membuat tema yang mudah diubah.
+
+/* Tema dengan Variabel CSS */
+:root {
+    --primary-color: #4CAF50;
+    --secondary-color: #FFC107;
+    --text-color: #333;
+    --background-color: #f4f4f4;
+    --font-size: 16px;
+}
+
+body {
+    font-size: var(--font-size);
+    color: var(--text-color);
+    background-color: var(--background-color);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text-color: #f4f4f4;
+        --background-color: #333;
+    }
+}
+
+
+===============================================
+
+3. Struktur Dasar CSS Global
+Menulis gaya dasar untuk elemen umum seperti header, footer, dan konten utama.
+
+/* Gaya Dasar Global */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+header {
+    background: var(--primary-color);
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+
+footer {
+    background: var(--secondary-color);
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+
+==============================================
+
+4. Gaya untuk Komponen Spesifik
+Gunakan scoping untuk membatasi gaya hanya pada komponen tertentu.
+
+<section class="card">
+    <style>
+        .card {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 1rem;
+            background-color: white;
+        }
+
+        .card h1 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card p {
+            font-size: 1rem;
+            color: var(--text-color);
+        }
+    </style>
+
+    <h1>Judul Kartu</h1>
+    <p>Ini adalah konten kartu.</p>
+</section>
+
+
+========================================
+
+5. Layout Responsif dengan Flexbox dan Grid
+Menggunakan Flexbox dan Grid untuk tata letak responsif.
+
+/* Flexbox untuk Layout Satu Dimensi */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    padding: 0 1rem;
+}
+
+/* Grid untuk Layout Dua Dimensi */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.grid-item {
+    background-color: white;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+===========================================
+
+6. Helper Functions
+Menggunakan fungsi nilai seperti calc dan color-mix.
+
+/* Helper Functions */
+.button {
+    --button-size: 1rem;
+
+    font-size: var(--button-size);
+    padding: calc(.5 * var(--button-size)) calc(1.25 * var(--button-size));
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: color-mix(in srgb, var(--primary-color) 65%, var(--secondary-color));
+}
+
+
+=========================================
+
+7. Kelas Semantik
+Menggunakan nama kelas yang semantik untuk menggambarkan gaya.
+
+/* Kelas Semantik */
+.text-center {
+    text-align: center;
+}
+
+.margin-top {
+    margin-top: 2rem;
+}
+
+.padding {
+    padding: 1rem;
+}
+
+===================================
+
