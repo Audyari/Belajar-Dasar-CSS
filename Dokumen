@@ -1,235 +1,113 @@
-Contoh Tanpa Framework CSS
+praktik terbaik desain tabel data:
 
 =====================
 
-ADA 7 Stepp nya :
+Setelah Penerapan Praktik Terbaik :
 
-=================================
-Buat index.html :
+Rata kiri kolom teks: Kolom Nama dirata kiri.
+Rata kanan kolom numerik: Kolom Umur dan Gaji dirata kanan.
+Hindari perataan tengah: Semua teks di kolom dirata kiri atau kanan sesuai jenis data.
+Gunakan tipografi monospasi untuk angka: Menggunakan font seperti Roboto Mono untuk kolom numerik.
+Header lengket: Header tetap terlihat saat menggulir.
+Zebra stripes: Baris menggunakan latar belakang warna bergantian.
+Gunakan kontras yang jelas untuk header: Header menggunakan font tebal dan latar belakang yang berbeda.
+
+Fitur Tambahan
+
+Paginasi: Jika ada lebih dari 10 baris, tabel dipecah menjadi halaman-paginasikan.
+Sortir Kolom: Klik pada header kolom Umur atau Gaji untuk mengurutkan baris secara ascending atau descending.
+Kolom Tetap: Kolom No. tetap terlihat saat menggulir horizontal.
+
+code nya : 
 
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contoh Tanpa Framework CSS</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <header class="text-center">
-      <h1>Selamat Datang di Situs Saya</h1>
-    </header>
+<html>
+<head>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+            position: sticky;
+            top: 0;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .right-align {
+            text-align: right;
+        }
+        .left-align {
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
 
-    <div class="container">
-      <section class="card">
-        <h1>Judul Kartu</h1>
-        <p>Ini adalah konten kartu.</p>
-      </section>
+<table>
+    <thead>
+        <tr>
+            <th>No.</th>
+            <th class="left-align">Nama</th>
+            <th class="right-align">Umur</th>
+            <th class="left-align">Tanggal Lahir</th>
+            <th class="left-align">Nomor Telepon</th>
+            <th class="right-align">Gaji</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td class="left-align">John Doe</td>
+            <td class="right-align">28</td>
+            <td class="left-align">01/01/1996</td>
+            <td class="left-align">123-456-7890</td>
+            <td class="right-align">$50,000</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td class="left-align">Jane Smith</td>
+            <td class="right-align">34</td>
+            <td class="left-align">12/12/1989</td>
+            <td class="left-align">098-765-4321</td>
+            <td class="right-align">$60,000</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td class="left-align">Emily Davis</td>
+            <td class="right-align">25</td>
+            <td class="left-align">07/07/1998</td>
+            <td class="left-align">555-555-5555</td>
+            <td class="right-align">$55,000</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td class="left-align">Michael Brown</td>
+            <td class="right-align">45</td>
+            <td class="left-align">03/03/1979</td>
+            <td class="left-align">666-666-6666</td>
+            <td class="right-align">$70,000</td>
+        </tr>
+    </tbody>
+</table>
 
-      <nav class="navbar">
-        <a href="#">Home</a>
-        <a href="#">About</a>
-        <a href="#">Contact</a>
-      </nav>
-
-      <div class="grid-container">
-        <div class="grid-item">Item 1</div>
-        <div class="grid-item">Item 2</div>
-        <div class="grid-item">Item 3</div>
-      </div>
-
-      <button class="button">Klik Saya</button>
-    </div>
-
-    <footer class="text-center">
-      <p>Hak Cipta &copy; 2024</p>
-    </footer>
-  </body>
+</body>
 </html>
-
-
-===========================================
-
-1. CSS Reset
-Mulailah dengan CSS reset untuk menghapus gaya default browser.
-
-/* CSS Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-
-===========================================
-
-2. Tema dengan Variabel CSS
-Menggunakan variabel CSS untuk membuat tema yang mudah diubah.
-
-/* Tema dengan Variabel CSS */
-:root {
-    --primary-color: #4CAF50;
-    --secondary-color: #FFC107;
-    --text-color: #333;
-    --background-color: #f4f4f4;
-    --font-size: 16px;
-}
-
-body {
-    font-size: var(--font-size);
-    color: var(--text-color);
-    background-color: var(--background-color);
-}
-
-@media (prefers-color-scheme: dark) {
-    :root {
-        --text-color: #f4f4f4;
-        --background-color: #333;
-    }
-}
 
 
 ===============================================
 
-3. Struktur Dasar CSS Global
-Menulis gaya dasar untuk elemen umum seperti header, footer, dan konten utama.
 
-/* Gaya Dasar Global */
-body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-}
+Penjelasan:
+Rata Kiri dan Kanan: Kolom teks dirata kiri, kolom numerik dirata kanan.
+Header Tetap: Posisi header tetap ketika menggulir.
+Zebra Stripes: Baris dengan warna latar belakang bergantian.
+Kontras yang Jelas: Header memiliki latar belakang yang berbeda untuk meningkatkan kontras.
 
-header {
-    background: var(--primary-color);
-    color: white;
-    padding: 1rem;
-    text-align: center;
-}
-
-footer {
-    background: var(--secondary-color);
-    color: white;
-    padding: 1rem;
-    text-align: center;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem;
-}
-
-
-==============================================
-
-4. Gaya untuk Komponen Spesifik
-Gunakan scoping untuk membatasi gaya hanya pada komponen tertentu.
-
-<section class="card">
-    <style>
-        .card {
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            padding: 1rem;
-            background-color: white;
-        }
-
-        .card h1 {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .card p {
-            font-size: 1rem;
-            color: var(--text-color);
-        }
-    </style>
-
-    <h1>Judul Kartu</h1>
-    <p>Ini adalah konten kartu.</p>
-</section>
-
-
-========================================
-
-5. Layout Responsif dengan Flexbox dan Grid
-Menggunakan Flexbox dan Grid untuk tata letak responsif.
-
-/* Flexbox untuk Layout Satu Dimensi */
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-    background-color: var(--primary-color);
-    color: white;
-}
-
-.navbar a {
-    color: white;
-    text-decoration: none;
-    padding: 0 1rem;
-}
-
-/* Grid untuk Layout Dua Dimensi */
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-    padding: 1rem;
-}
-
-.grid-item {
-    background-color: white;
-    padding: 1rem;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
-
-===========================================
-
-6. Helper Functions
-Menggunakan fungsi nilai seperti calc dan color-mix.
-
-/* Helper Functions */
-.button {
-    --button-size: 1rem;
-
-    font-size: var(--button-size);
-    padding: calc(.5 * var(--button-size)) calc(1.25 * var(--button-size));
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.button:hover {
-    background-color: color-mix(in srgb, var(--primary-color) 65%, var(--secondary-color));
-}
-
-
-=========================================
-
-7. Kelas Semantik
-Menggunakan nama kelas yang semantik untuk menggambarkan gaya.
-
-/* Kelas Semantik */
-.text-center {
-    text-align: center;
-}
-
-.margin-top {
-    margin-top: 2rem;
-}
-
-.padding {
-    padding: 1rem;
-}
-
-===================================
-
+=================================================
